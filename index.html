@@ -147,14 +147,37 @@
             <div class="text-center">
                 <h2 class="section-heading text-uppercase">System Design</h2>
             </div>
+            <div class = "text-center">
+                <h3 class = "section-heading text-uppercase">Class Diagrams</h3>
+                <h4 class = "my-3">Model loading and initialisation</h4>
+                <img src = "assets/img/ModelLoadingUML2.png" style="width:100%">
+                <p class ="text-muted">(WIP explanatation) Makes a call to the GLTFUtility library to load in the appropriate files (glb and gltf), which Unity does not 
+                    natively support. </p>
+                <h4 class = "my-3">Annotations and storing scene state</h4>
+                <img src = "assets/img/Annotations2.png" style="width:100%">
+                <p class ="text-muted">(WIP explanatation)Annotations are used to store the current state of the scene along with text input by the user about that particular scene state.
+                    Annotations are stored in the form of AnnotationData objects which can be parsed to and from JSON. The relevant data from the scene is used to initialise
+                    these objects. This same data can be used to reinitialise the state of the scene when a particular annotation is selected.
+                </p>
+                <h4 class = "my-3">Event System</h4>
+                <img src = "assets/img/Event System.png" style ="width:100%">
+                <p class="text-muted">(WIP explanatation)The EventManager class is a singleton which holds a reference to a number of different events that will trigger actions within the scene.
+                All the classes that use the EventManager will invoke one of its public methods, firing the corresponding event in doing so. As the EventManager is a singleton,
+                any other class in the scene can subscribe to these events. This reduces dependencies between classes, in an effort to keep the software modular and more easily
+                extensible.
+                </p>
+            </div>
+            <div class = "text-center">
+            </div>
         <div class="row text-center">
                 <div class="col-md-4">
                     <h4 class="my-3">Context Diagram</h4>
                     <p class="text-muted"></p>
                     <h4 class="my-3">System architecture diagram</h4>
                     <p class="text-muted"></p>
-                    <h4 class="section-head text-uppercase">Class Diagram</h4>
-                    <img src = "assets/img/"
+                    <div class ="text-center"></div>
+                        <h4 class="section-heading text-uppercases">Class Diagrams</h4>
+                    </div>
                     <p class="text-muted">Relationships between Unity GameObjects</p>
                 </div>
             </div>
