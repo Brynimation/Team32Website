@@ -13,3 +13,5 @@ FHIR (Fast Healthcare Interoperability Resources) -a protocol that handles the e
 The last two technologies also require an understanding of JSON which we will also need to learn.<br>
 As part of our HCI (Human Computer Interaction) coursework we have to create an interactive prototype of our project. We started off this week by creating a few low fidelity sketches, and then carried out a number of semi-structured interviews on pseudo-users (other members of our course). Showing our pseudo-users our designs proved to be very helpful, as it made the questions we asked seem less abstract and enabled them to give us a more concrete idea of what users would want from an app like this.<br>
 
+![](./Images/Week1.1.jpg)
+![](./Images/Week1.2.jpg)
