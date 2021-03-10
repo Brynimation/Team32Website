@@ -1,6 +1,6 @@
 ## Welcome to GitHub Pages
 
-You can use the [editor on GitHub](https://github.com/Brynimation/Team32Website/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+You can use the [2/10/2020-18/10/2020] (https://github.com/Brynimation/Team32Website/edit/gh-pages/Week1.md) to maintain and preview the content for your website in Markdown files.
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
