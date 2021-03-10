@@ -1,4 +1,4 @@
-#2 /10/2020-18/10/2020
+# 2/10/2020-18/10/2020
 
 This week we were assigned our projects and teams. Our brief is as follows:<br>
 
