@@ -148,6 +148,11 @@
                 <h2 class="section-heading text-uppercase">System Design</h2>
             </div>
             <div class = "text-center">
+                <h3 class = "section-heading text-uppercase">System Architecture Diagram</h3>
+                <img src = "assets/img/System Architecture diagram 1.png" style = "width:100%">
+                <p class = "text-muted">(WIP) The above System Architecture provides a high-level overview of our system, including the main features offered by the GUI and the filetypes
+                    involved. 
+                </p> 
                 <h3 class = "section-heading text-uppercase">Class Diagrams</h3>
                 <h4 class = "my-3">Model loading and initialisation</h4>
                 <img src = "assets/img/ModelLoadingUML2.png" style="width:100%">
@@ -164,7 +169,7 @@
                 <p class="text-muted">(WIP explanatation)The EventManager class is a singleton which holds a reference to a number of different events that will trigger actions within the scene.
                 All the classes that use the EventManager will invoke one of its public methods, firing the corresponding event in doing so. As the EventManager is a singleton,
                 any other class in the scene can subscribe to these events. This reduces dependencies between classes, in an effort to keep the software modular and more easily
-                extensible.
+                extensible. Any class that needs to listen for these events implements the IEventManagerListener interface, mandating it to implement the subscribeToEvents() method.
                 </p>
             </div>
             <div class = "text-center">
