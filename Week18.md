@@ -1,12 +1,12 @@
 
 ## 08/02/2021 - 14/02/2021
-We delivered our first build to our clients (at the request of Dr Mohamedally - who wanted our application to be used to demonstrate the capabilities of a [final year student's project](https://www.youtube.com/watch?v=fl6hC8mOj1c), which involves touch-less gesture technology). It was a huge relief to see that the application worked beyond the devices we've been developing them on, and this serves as a great bit of very early testing. <br><br>
+I delivered the first build to our clients (at the request of Dr Mohamedally - who wanted our application to be used to demonstrate the capabilities of a [final year student's project](https://www.youtube.com/watch?v=fl6hC8mOj1c), which involves touch-less gesture technology). It was a huge relief to see that the application worked beyond the devices we've been developing them on, and this serves as a great bit of very early testing. <br><br>
 
-Our main focus this week was on allowing our application to work beyond the example models we were given.  
+My main focus this week was on allowing our application to work beyond the example models we were given.  
 
 There were two aspects to this problem: Allowing the user to browse local storage to find a model to load into the application, and ensuring that the camera controls work as expected with a range of different models.  
 
-To solve the former problem we spent some time looking into some plugins that we could make use of, and [found one on the Unity Asset Store that suited our needs perfectly.](https://github.com/gkngkc/UnityStandaloneFileBrowser).
+To solve the former problem I spent some time looking into some plugins that we could make use of, and [found one on the Unity Asset Store that suited our needs perfectly.](https://github.com/gkngkc/UnityStandaloneFileBrowser).
 
 Our example models are loaded into the application with a hard-coded position and orientation relative to a parent GameObject that sits at the origin (0,0,0). Our camera controls are such that they rotate about the transform of this parent GameObject. This slight offset from the origin isn't strictly necessary, but as our models are complex (have many children as well as visual artifacts that can span quite far from the model's true centre), the position that Unity calculates to be their centre/transform felt un-intuitive and lead to the camera controls feeling equally un-intuitive.
 The offset we applied corrected this, but this isn't a good approach in a general sense.
