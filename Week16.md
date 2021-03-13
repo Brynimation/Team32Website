@@ -16,4 +16,6 @@ If the result is positive, then the current pixel being processed is above the p
 
 This shader did work well, but unfortunately its rendering mode was set to Opaque so did not support our transparency changing features. Just changing the rendering mode to transparent lead to a number of very strange effects as expected. The fix that I used the first time we encountered this problem (Turning the ZWrite On and ColorMask to 0 in a Pass) lead to other issues, namely that many parts of the cross section were occluded.
 
-Truthfully, writing a shader that supported both the cross sectional view feature and our opacity feature was quite experimental, but it works.
+Truthfully, writing a shader that supported both the cross sectional view feature and our opacity feature was quite experimental, but it works.<br><br>
+One important thing to note is that the Shader has two properties related to the plane: *_planeNormal* and *_planePosition*, but these are just arbitrary Vector3 values. In order to test the shader, I've been using a plane GameObject as a means of visualising the plane, where its transform.position is passed as the _planePosition property, and its transform.up attribute is passed as the _planeNormal property. The values of these properties are updated every frame.
+
