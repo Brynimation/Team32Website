@@ -197,31 +197,65 @@
                 <h2 class="section-heading text-uppercase">Implementation</h2>
             </div>
             <div class = "text-center">
+
+
+
+                <!-- RENDERING AND INITALISING --> 
                 <h3 class="section-heading text-uppercase">Rendering and Initialsing the Models</h3>
-                <p class="text-muted">Our application loads and renders GLB AND GLTF files at runtime. Unity, however, does not natively support these file types. In order to load the models into the application
-                    we made use of <a href="https://github.com/Siccity/GLTFUtility">GLTFUtility</a>, an open source library that supports runtime import of glb/gltf files into Unity. It works by converting the data in the GLB/GLTF files into Unity GameObjects with a MeshFilter
-                    and MeshRenderer componenet attached, which the Unity engine can render.<br>
+                <p class="text-body">Our application loads and renders GLB AND GLTF files at runtime. Unity, however, does not natively support these file types. In order to load the models into the application
+                    we made use of <a href="https://github.com/Siccity/GLTFUtility">GLTFUtility</a>, an open source library that supports runtime import of GLB/GLTF files into Unity. It converts the data in the GLB/GLTF files into Unity GameObjects with a MeshFilter
+                    and MeshRenderer componenet attached. These components allow Unity to render the model.<br>
                     <img src = "assets/img/Code snippets/Organ constructor.png">
-                    <p class= "text-muted"><i>Snippet: Organ.cs</i></p>
-                    <br></br>
+                    <p class= "text-muted"><i> Organ.cs</i></p>
                     <img src = "assets/img/Code snippets/loadModelbetter.png">
-                    <p class = "text-muted>"><i>Snippet: ModelHandler.cs</i></p>
-                    <br></br>
-                <p class="text-muted"> The model is loaded and initialised within a <i>coroutine</i>. The condition in the <i>yield</i> statement is evaluated each frame, and if it is false, control is passed back to the 
+                    <p class = "text-muted>"><i>ModelHandler.cs</i></p>
+                <p class="text-body"> The model is loaded and initialised within a <i>coroutine</i>. The condition in the <i>yield</i> statement is evaluated each frame, and if it is false, control is passed back to the 
                     calling function so that other code can continue to execute while the model is being loaded. Once the condition is true, the remaining code executes and fully initialises the model.
                 <p class="text-muted"></p>
-                    <img src
-                </p>
+
+                
+        
+                <!-- CAMERA CONTROLS --> 
                 <h3 class="section-heading text-uppercase">Camera Controls</h3>
                 <p class = "text-muted">
-
                 </p>
-                <p class="text-muted">Description</p>
                 <h3 class="section-heading text-uppercase">Changing Model Colour and Opacity</h3>
+                <p class="text-body"> To allow the opacity and colour of the segments of loaded models to be changed, our code directly accesses the renderers of the models.
+                </p>
 
-                <p class="text-muted">Description</p>
+
+
+                <!-- ADJUST COLOUR AND OPACITY -->
+                <img src="assets/img/Code snippets/Adjust colour and opacity.png" style = "width:100">
+                <p class ="text-muted"> MaterialAssigner.cs </p>
+                <p class = "text-body"><i>GetComponent"<Renderer>"()</i> returns the renderer of the GameObject/model segment passed to the functions. By changing the values
+                    of its material, we change how the Unity renderer displays the GameObjects on screen. MaterialAssigner is a static class and houses all methods related to the assignment and manipulation of the materials of loaded models. The functions above in particular
+                are called as part of callback actions to different events triggered by the user (see below).</p>
+                <img src="assets/img/Code snippets/col and opacity 2.png" style = "width:100">
+                <p class = "text-muted">ModelHandler.cs</p>
+
+
+
+
+                <!-- CREATING, STORING AND VIEWING ANNOTATIONS -->
                 <h3 class="section-heading text-uppercase">Creating, Storing and Viewing Annotations</h3>
-                <p class="text-muted">Description</p>
+                <p class = "text-body">Annotations are used for storing text about a particular model in a particular view of that model. To clarify, if the user creates an annotation, the current state of the scene,
+                    along with the text they entered, is saved. Selecting this annotation will return the user to that exact view of the model, and display the text in a textbox. 
+                    This data is stored in the form of an AnnotationData object.
+                </p>
+                <img src = "assets/img/Code snippets/AnnotationData.PNG" style="size:50px">
+                <p class="text-muted">AnnotationData.cs</p>
+                <p class ="text-body">When a user confirms they want to create an annotation, a new AnnotationData object is instantiated and its fields populated with the relevant data.
+                     It is then converted into a JSON string and written to a new file whose name is the same as the title entered by the user. This file is stored in a directory whose name is the same as the model currently being viewed.
+                     This directory is initialised as soon as the model is loaded into the program for the first time, in the same directory that the application runs in.
+                </p>
+                <img src = "assets/img/Code snippets/Annotation.png">
+                <p class="text-muted">Annotation.cs</p>
+                <p class ="text-body">The user can select an annotation to view from a dropdown menu. When the user clicks the button to view the dropdown menu, the relevant folder is searched for JSON files. All these files are parsed from JSON back into AnnotationData objects,
+                    which are stored in a list. When one is selected, an <i>OnSelectAnnotation</i>event is fired which holds the relevant AnnotationData object. All subscribers of this event will restore the part of the scene that they are responsible for back to the state
+                    encapsulated by the AnnotationData object received (for instance, CameraController restores camera position,rotation and displacement, ModelHandler restores the colours of the model segments, etc).
+                <img src = "assets/img/Code snippets/JsonToAnnotationNoComment.png">
+                <p class="text-muted">AnnotationSelector.cs</p>
                 <h3 class="section-heading text-uppercase">Cross Sectional Viewer</p>
                 <p class="text-muted">Description</p>
                 <h3 class="section-heading text-uppercase">DICOM Viewer</p>
