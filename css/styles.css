@@ -68,6 +68,16 @@ body {
   text-align: left;
   background-color: #fff;
 }
+ .Column2{
+  float: left;
+  width: 30%;
+  padding:20px;
+}
+.row2::after {
+  content: "";
+  clear: both;
+  display: table;
+}
 
 [tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important;
@@ -579,6 +589,7 @@ pre code {
   margin-right: -0.75rem;
   margin-left: -0.75rem;
 }
+
 
 .no-gutters {
   margin-right: 0;

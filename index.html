@@ -280,11 +280,26 @@
                 <p class = "text-muted">The <b>input</b> struct, that holds the data from the model's mesh that will be used to determine how the shader interacts with the model
                 <img src = "assets/img/Code snippets/cross section shader 3.PNG">
                 <p class="text-muted">The <b>surface function</b>, which fills in the <b>SurfaceOutputStandard</b> struct. This ultimately defines how the model is rendered.</p>
-                <p class="text-body">This is the shader that is applied to all the segments of the model when it is loaded in (see Model Loading and Initialisation). We also wrote another
-                    very similar shader that, instead of discarding all pixels above the plane, turns them black. This allows the user to visualise the cross-section they wish to make 
-                    before confirming it.
+                <p class="text-body">This is the shader that is applied to the model after it has first loaded in (in the <b>loadModel</b> coroutine in the <i>Model Rendering and Initialisation section</i>).
+                    However, initially, all of the model's geometry is visible due to the plane being initialised with a y position of <i>modelCentre +modelRadius</i>, which will always be greater than the height of
+                    the model itself as this radius represents the bounding sphere of the renderer of the model.
+                    When the user first presses the cross-sectional view icon, the plane controller is enabled and a different shader is applied to the model. This shader turns the pixels above the plane black.
                 </p>
-
+                <img src = "assets/img/Code snippets/enable plane controller.png">
+                <p class = "text-muted">PlaneController.cs</p>
+                <p class= "text-body">The user then controls the plane by means of sliders. One slider controls the y position of the plane, while the other three control the orientation of the plane about the x,y and z
+                    axes. This is an example of the type of callback action that is passed to a slider.
+                </p>
+                <img src = "assets/img/Code snippets/changeXRot.png">
+                <p class = "text-muted">PlaneController.cs</p>
+                <p class = "text-body"> Finally, it's important to note that, although the <b>properties</b> of the shader can be accessed, the shader itself cannot hold a reference
+                to any other object in the scene. The <b>_PlanePosition</b> and <b>_PlaneNormal</b> are arbitrary Vector3 values. Every frame, these values must be updated with the position
+                and normal of the plane being controlled by the user.</p>
+                <img src = "assets/img/Code snippets/Update planeos.png" style = "width:50">
+                <p class = "text-muted">PlaneController.cs</p>
+                <img src = "assets/img/Code snippets/material assigner update plane pos.png" style = "width:50">
+                <p class = "text-muted">MaterialAssigner.cs</p>       
+                
 
                  <!-- DICOM VIEWER -->
 
