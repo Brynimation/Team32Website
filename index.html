@@ -256,8 +256,31 @@
                     encapsulated by the AnnotationData object received (for instance, CameraController restores camera position,rotation and displacement, ModelHandler restores the colours of the model segments, etc).
                 <img src = "assets/img/Code snippets/JsonToAnnotationNoComment.png">
                 <p class="text-muted">AnnotationSelector.cs</p>
-                <h3 class="section-heading text-uppercase">Cross Sectional Viewer</p>
-                <p class="text-muted">Description</p>
+
+                <!-- CROSS SECTIONAL VIEWER -->
+
+
+                <h3 class="section-heading text-uppercase">Cross Sectional Viewer</h3>
+                <p class="text-body">Implementing the cross sectional viewer feature was arguably the most complicated part of the project, as it required the use of <i>surface shaders</i> written in High Level Shader Language. Luckily, Unity does provide skeleton code for the creation of Surface Shaders, 
+                    so we were by no means starting from scratch.
+                    The concept that our shaders employ is similar to <i>occlusion culling</i>, in which an object will only be rendered if it is between the near and far clipping planes of the camera. If an object is partially between these two planes, only its polygons between the two planes will be drawn to the screen.
+                    Our shader (which we based heavily on <a href="url">this open-source shader</a>) determines what not to draw to the screen based on the position of plane.
+                </p>
+                <img src = "assets/img/Code snippets/cross section shader 3.PNG">
+                <p class="text-body">The "surf" function is required for all surface shaders. To determine which polygons of the model are above the plane, the dot product 
+                    of:
+                    <ol>
+                     <li>the distance between the <i>world space position of a given pixel on the model</i> and the <i>world space position of the plane</i></li>
+                     <li>the plane's normal</li>
+                    </ol>
+                    is calculated. If this value is <i>positive</i>, then the pixel being examined is <i>above</i> the plane and so is discarded using the <i>clip</i> function. This means it is not
+                    drawn to the screen by the GPU.
+                </p>
+
+
+                 <!-- DICOM VIEWER -->
+
+
                 <h3 class="section-heading text-uppercase">DICOM Viewer</p>
                 <p class="text-muted">Description</p>
             </div>
