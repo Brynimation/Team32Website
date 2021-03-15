@@ -210,7 +210,8 @@
                     <img src = "assets/img/Code snippets/loadModelbetter.png">
                     <p class = "text-muted>"><i>ModelHandler.cs</i></p>
                 <p class="text-body"> The model is loaded and initialised within a <i>coroutine</i>. The condition in the <i>yield</i> statement is evaluated each frame, and if it is false, control is passed back to the 
-                    calling function so that other code can continue to execute while the model is being loaded. Once the condition is true, the remaining code executes and fully initialises the model.
+                    calling function so that other code can continue to execute while the model is being loaded. Once the condition is true, the remaining code executes and fully initialises the model. The line 
+                    <b>MaterialAssigner.assignToAllChildren</b> is described more in later sections.
                 <p class="text-muted"></p>
 
                 
@@ -219,13 +220,10 @@
                 <h3 class="section-heading text-uppercase">Camera Controls</h3>
                 <p class = "text-muted">
                 </p>
+                                <!-- ADJUST COLOUR AND OPACITY -->
                 <h3 class="section-heading text-uppercase">Changing Model Colour and Opacity</h3>
                 <p class="text-body"> To allow the opacity and colour of the segments of loaded models to be changed, our code directly accesses the renderers of the models.
                 </p>
-
-
-
-                <!-- ADJUST COLOUR AND OPACITY -->
                 <img src="assets/img/Code snippets/Adjust colour and opacity.png" style = "width:100">
                 <p class ="text-muted"> MaterialAssigner.cs </p>
                 <p class = "text-body"><i>GetComponent"<Renderer>"()</i> returns the renderer of the GameObject/model segment passed to the functions. By changing the values
@@ -233,6 +231,7 @@
                 are called as part of callback actions to different events triggered by the user (see below).</p>
                 <img src="assets/img/Code snippets/col and opacity 2.png" style = "width:100">
                 <p class = "text-muted">ModelHandler.cs</p>
+                <p class = "text-body"> We did initially experience some draw ordering issues when adjusting the opacity</p>
 
 
 
@@ -261,20 +260,29 @@
 
 
                 <h3 class="section-heading text-uppercase">Cross Sectional Viewer</h3>
-                <p class="text-body">Implementing the cross sectional viewer feature was arguably the most complicated part of the project, as it required the use of <i>surface shaders</i> written in High Level Shader Language. Luckily, Unity does provide skeleton code for the creation of Surface Shaders, 
-                    so we were by no means starting from scratch.
-                    The concept that our shaders employ is similar to <i>occlusion culling</i>, in which an object will only be rendered if it is between the near and far clipping planes of the camera. If an object is partially between these two planes, only its polygons between the two planes will be drawn to the screen.
-                    Our shader (which we based heavily on <a href="url">this open-source shader</a>) determines what not to draw to the screen based on the position of plane.
+                <p class="text-body">To implement this feature we made use of <i>surface shaders</i> written in High Level Shader Language.
+                    Surface shaders provide a code generation approach to writing shaders that interact with light in Unity. 
+                    The concept that our cross-sectional view shader employs is similar to the idea of  <i>occlusion culling</i>, in which an object will only be rendered by a camera if it is between the near and far clipping planes of the camera. 
+                    If an object is partially between these two planes, only its polygons between the two planes will be drawn to the screen.
+                    Our shader (which we based heavily on <a href="url">this open-source shader</a>, as well as the shaders included in the GLTFUtility library that were already being used) determines which pixels of the model should not be drawn to the screen,
+                    based on the position and orientation of a plane that is controlled by the user using sliders.<br> If the <b>dot product</b> of:
+                    <ui>
+                        <li>The distance between the <i>world space</i> position of a vertex on the mesh of the model and the centre of the plane and</li>
+                        <li>The plane's normal</li>
+                    is positive, then the current pixel is <b>above</b> the plane, so is discarded.
                 </p>
+                <p>Below I've included the shader itself</p><br>
+                <img src = "assets/img/Code snippets/Shader properties.PNG">
+                <p class = "text-muted">The list of <b>properties</b> which can be accessed externally (in the Unity inspector, in c# scripts, etc).</p>
+                <img src = "assets/img/Code snippets/Shader pass.PNG">
+                <p class = "text-muted">The <b>subshader</b> block, where we define the RenderingMode as transparent and perform an initlal <b>pass</b>.
+                <img src = "assets/img/Code snippets/shader input.PNG">
+                <p class = "text-muted">The <b>input</b> struct, that holds the data from the model's mesh that will be used to determine how the shader interacts with the model
                 <img src = "assets/img/Code snippets/cross section shader 3.PNG">
-                <p class="text-body">The "surf" function is required for all surface shaders. To determine which polygons of the model are above the plane, the dot product 
-                    of:
-                    <ol>
-                     <li>the distance between the <i>world space position of a given pixel on the model</i> and the <i>world space position of the plane</i></li>
-                     <li>the plane's normal</li>
-                    </ol>
-                    is calculated. If this value is <i>positive</i>, then the pixel being examined is <i>above</i> the plane and so is discarded using the <i>clip</i> function. This means it is not
-                    drawn to the screen by the GPU.
+                <p class="text-muted">The <b>surface function</b>, which fills in the <b>SurfaceOutputStandard</b> struct. This ultimately defines how the model is rendered.</p>
+                <p class="text-body">This is the shader that is applied to all the segments of the model when it is loaded in (see Model Loading and Initialisation). We also wrote another
+                    very similar shader that, instead of discarding all pixels above the plane, turns them black. This allows the user to visualise the cross-section they wish to make 
+                    before confirming it.
                 </p>
 
 

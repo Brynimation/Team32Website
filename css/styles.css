@@ -9935,6 +9935,7 @@ h3 {
   }
   body {
     min-width: 992px !important;
+    overflow-x: auto;
   }
 
   .container {
