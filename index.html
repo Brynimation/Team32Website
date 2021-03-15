@@ -197,11 +197,28 @@
                 <h2 class="section-heading text-uppercase">Implementation</h2>
             </div>
             <div class = "text-center">
-                <h3 class="section-heading text-uppercase">Rendering the Models</h3>
-                <p class="text-muted">Description</p>
+                <h3 class="section-heading text-uppercase">Rendering and Initialsing the Models</h3>
+                <p class="text-muted">Our application loads and renders GLB AND GLTF files at runtime. Unity, however, does not natively support these file types. In order to load the models into the application
+                    we made use of <a href="https://github.com/Siccity/GLTFUtility">GLTFUtility</a>, an open source library that supports runtime import of glb/gltf files into Unity. It works by converting the data in the GLB/GLTF files into Unity GameObjects with a MeshFilter
+                    and MeshRenderer componenet attached, which the Unity engine can render.<br>
+                    <img src = "assets/img/Code snippets/Organ constructor.png">
+                    <p class= "text-muted"><i>Snippet: Organ.cs</i></p>
+                    <br></br>
+                    <img src = "assets/img/Code snippets/loadModelbetter.png">
+                    <p class = "text-muted>"><i>Snippet: ModelHandler.cs</i></p>
+                    <br></br>
+                <p class="text-muted"> The model is loaded and initialised within a <i>coroutine</i>. The condition in the <i>yield</i> statement is evaluated each frame, and if it is false, control is passed back to the 
+                    calling function so that other code can continue to execute while the model is being loaded. Once the condition is true, the remaining code executes and fully initialises the model.
+                <p class="text-muted"></p>
+                    <img src
+                </p>
                 <h3 class="section-heading text-uppercase">Camera Controls</h3>
+                <p class = "text-muted">
+
+                </p>
                 <p class="text-muted">Description</p>
                 <h3 class="section-heading text-uppercase">Changing Model Colour and Opacity</h3>
+
                 <p class="text-muted">Description</p>
                 <h3 class="section-heading text-uppercase">Creating, Storing and Viewing Annotations</h3>
                 <p class="text-muted">Description</p>
