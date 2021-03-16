@@ -216,11 +216,38 @@
 
                 
         
-                <!-- CAMERA CONTROLS --> 
+                                    <!-- CAMERA CONTROLS --> 
+
                 <h3 class="section-heading text-uppercase">Camera Controls</h3>
-                <p class = "text-muted">
+                <p class = "text-body">The user is able to rotate the camera about a pivot position, zoom in and out, and translate the camera left, right, up and down using keybinds.
+                    This pivot is initialised to the origin (0,0,0), as this is the position that the model is loaded in. However, this position can be changed by means of the PivotController.</p>
+                <img src = "assets/img/Code snippets/All camera stuff.png">
+                <p class = "text-muted">CameraController.cs</p>
+                <p class = "text-body">The direction of rotation of the camera is determined by the direction vector of the pointer. This rotation is achieved using the <b>.Rotate</b> method, which
+                    is a public method of the <b>Transform</b> class provided in the UnityEngine namespace. All Unity GameObjects have a Transform component attached that describes its position and orientation in the scene.
+                    The displacement (in the z axis) of the camera from the pivot is determined by the movement of the Scroll wheel. Every frame, the camera's position is set to the pivot about which it is rotating, but is then translated away from the 
+                    pivot, using the <b>Translate</b> method, by the <i>displacement</i> vector.
+                </p>
+                <p>The displacement is also used to store the amount displaced in the x and y axes when the keybinds are used.</p>
+                <p class = "text-body"></p>
+                <p class = "text-muted"></p>
+                <img src = "assets/img/Code snippets/SetCameraDistance.png">
+                <p class = "text-muted">CameraController.cs</p>
+                <p class = "text-body">In order to allow models of different sizes to be loaded into the application and viewed in the same way, the initial displacement
+                    of the camera from the pivot is determined by <i>modelRadius</i>, the radius of the model (more accurately, the radius of the sphere that bounds the renderer of the model).
+                    This radius is also used to determine the <i>scrollspeed</i> attribute of the CameraController class, which means the speed at which the user can zoom in is 
+                    proportional to the size of the model.
+                </p>
+                <img src = "assets/img/Code snippets/resetCameralessAgain.png">
+                <p class = "text-muted">CameraResetter.cs</p>
+                <p class = "text-body">The position of the camera can also be reset by the user. This is carried out by means of the <b>Lerp</b> function, which performs a 
+                <b>Linear Interpolation</b> between two values. For the lerp called on the camera's position, the value returned on any given frame is equivalent to 
+                <b>startPos + (TargetPos - startPos) * ratio</b>, where <b>ratio</b> is the ratio of the currentlyElapsed time since the camera started resetting to the totalTravelTime.
+                When the ratio is one, the Camera's position will be equal to the target position and the Lerp is done. 
                 </p>
                                 <!-- ADJUST COLOUR AND OPACITY -->
+
+
                 <h3 class="section-heading text-uppercase">Changing Model Colour and Opacity</h3>
                 <p class="text-body"> To allow the opacity and colour of the segments of loaded models to be changed, our code directly accesses the renderers of the models.
                 </p>
@@ -231,7 +258,9 @@
                 are called as part of callback actions to different events triggered by the user (see below).</p>
                 <img src="assets/img/Code snippets/col and opacity 2.png" style = "width:100">
                 <p class = "text-muted">ModelHandler.cs</p>
-                <p class = "text-body"> We did initially experience some draw ordering issues when adjusting the opacity</p>
+                <p class = "text-body"> We initially encountered some draw ordering issues when attempting to adjust the opacity of the different segments of the model. We resolved these issues by
+                    making changes to the shaders our models were using (<i>see Cross Sectional Viewer</i>) and by adjusting the RenderQueue attribute of the material applied to each of the segments of the model. The higher the RenderQueue value, 
+                    the later an object is drawn to the screen.  This is the purpose of the <b>MaterialAssigner.assignToAllChildren</b> function in the <i>loadModel</i> coroutine above</p>
 
 
 
