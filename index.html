@@ -149,7 +149,7 @@
             </div>
             <div class = "text-center">
                 <h3 class = "section-heading text-uppercase">System Architecture Diagram</h3>
-                <img src = "assets/img/System Architecture diagram 1.png" style = "width:100%">
+                <img src = "assets/img/System architecture diagram again.png" style = "width:100%">
                 <p class = "text-muted">(WIP) The above System Architecture provides a high-level overview of our system, including the main features offered by the GUI and the filetypes
                     involved. 
                 </p> 
@@ -200,11 +200,11 @@
 
 
 
-                <!-- RENDERING AND INITALISING --> 
+                                     <!-- RENDERING AND INITIALISATION --> 
                 <h3 class="section-heading text-uppercase">Rendering and Initialsing the Models</h3>
                 <p class="text-body">Our application loads and renders GLB AND GLTF files at runtime. Unity, however, does not natively support these file types. In order to load the models into the application
                     we made use of <a href="https://github.com/Siccity/GLTFUtility">GLTFUtility</a>, an open source library that supports runtime import of GLB/GLTF files into Unity. It converts the data in the GLB/GLTF files into Unity GameObjects with a MeshFilter
-                    and MeshRenderer componenet attached. These components allow Unity to render the model.<br>
+                    and MeshRenderer component attached. These components allow Unity to render the model.<br>
                     <img src = "assets/img/Code snippets/Organ constructor.png">
                     <p class= "text-muted"><i> Organ.cs</i></p>
                     <img src = "assets/img/Code snippets/loadModelbetter.png">
@@ -223,12 +223,13 @@
                     This pivot is initialised to the origin (0,0,0), as this is the position that the model is loaded in. However, this position can be changed by means of the PivotController.</p>
                 <img src = "assets/img/Code snippets/All camera stuff.png">
                 <p class = "text-muted">CameraController.cs</p>
-                <p class = "text-body">The direction of rotation of the camera is determined by the direction vector of the pointer. This rotation is achieved using the <b>.Rotate</b> method, which
+                <p class = "text-body">The rotation of the camera is determined by the direction vector of the pointer. This rotation is achieved using the <b>Rotate</b> method, which
                     is a public method of the <b>Transform</b> class provided in the UnityEngine namespace. All Unity GameObjects have a Transform component attached that describes its position and orientation in the scene.
-                    The displacement (in the z axis) of the camera from the pivot is determined by the movement of the Scroll wheel. Every frame, the camera's position is set to the pivot about which it is rotating, but is then translated away from the 
-                    pivot, using the <b>Translate</b> method, by the <i>displacement</i> vector.
+                    The displacement (in the z axis) of the camera from the pivot is determined by the movement of the Scroll wheel. 
+                    Every frame, the camera's position is set equal to the position of the pivot. It is then rotated by the rotate method, and translated away from the 
+                    pivot using the <b>Translate</b> method. This creates the desired effect, in that the camera is always centered on the pivot.
                 </p>
-                <p>The displacement is also used to store the amount displaced in the x and y axes when the keybinds are used.</p>
+                <p>The displacement vector is also used to store the amount displaced in the x and y axes when the keybinds are used.</p>
                 <p class = "text-body"></p>
                 <p class = "text-muted"></p>
                 <img src = "assets/img/Code snippets/SetCameraDistance.png">
@@ -242,9 +243,10 @@
                 <p class = "text-muted">CameraResetter.cs</p>
                 <p class = "text-body">The position of the camera can also be reset by the user. This is carried out by means of the <b>Lerp</b> function, which performs a 
                 <b>Linear Interpolation</b> between two values. For the lerp called on the camera's position, the value returned on any given frame is equivalent to 
-                <b>startPos + (TargetPos - startPos) * ratio</b>, where <b>ratio</b> is the ratio of the currentlyElapsed time since the camera started resetting to the totalTravelTime.
-                When the ratio is one, the Camera's position will be equal to the target position and the Lerp is done. 
+                <b>startPos + (TargetPos - startPos) * ratio</b>, where <b>ratio</b> is the ratio of the elapsed time since the camera started resetting to the desired total reset time,
+                which is set to 2 seconds in our application. When the ratio is one, the Camera's position will be equal to the target position and the lerp function will no longer be called.
                 </p>
+
                                 <!-- ADJUST COLOUR AND OPACITY -->
 
 
@@ -253,14 +255,19 @@
                 </p>
                 <img src="assets/img/Code snippets/Adjust colour and opacity.png" style = "width:100">
                 <p class ="text-muted"> MaterialAssigner.cs </p>
-                <p class = "text-body"><i>GetComponent"<Renderer>"()</i> returns the renderer of the GameObject/model segment passed to the functions. By changing the values
+                <p class = "text-body"><i>GetComponent&ltRenderer&gt()</i> returns the renderer of the GameObject/model segment passed to the functions. By changing the values
                     of its material, we change how the Unity renderer displays the GameObjects on screen. MaterialAssigner is a static class and houses all methods related to the assignment and manipulation of the materials of loaded models. The functions above in particular
                 are called as part of callback actions to different events triggered by the user (see below).</p>
                 <img src="assets/img/Code snippets/col and opacity 2.png" style = "width:100">
                 <p class = "text-muted">ModelHandler.cs</p>
                 <p class = "text-body"> We initially encountered some draw ordering issues when attempting to adjust the opacity of the different segments of the model. We resolved these issues by
                     making changes to the shaders our models were using (<i>see Cross Sectional Viewer</i>) and by adjusting the RenderQueue attribute of the material applied to each of the segments of the model. The higher the RenderQueue value, 
-                    the later an object is drawn to the screen.  This is the purpose of the <b>MaterialAssigner.assignToAllChildren</b> function in the <i>loadModel</i> coroutine above</p>
+                    the later an object is drawn to the screen. By making it so that segments that are hidden by other segments are drawn to the screen later, it is possible to see them beneath the outer segments when the opacity of the outer 
+                    segments is reduced. This is the purpose of the <b>MaterialAssigner.assignToAllChildren</b> function called in the <i>loadModel</i> coroutine above.</p>
+                <img src = "assets/img/Code snippets/assignToAllChildren.png">
+                <p class = "text-muted">MaterialAssigner.cs</p>
+                <img src = "assets/img/Code snippets/assignNewMaterial.png">
+                <p class = "text-muted">MaterialAssigner.cs</p>
 
 
 
@@ -280,10 +287,13 @@
                 <img src = "assets/img/Code snippets/Annotation.png">
                 <p class="text-muted">Annotation.cs</p>
                 <p class ="text-body">The user can select an annotation to view from a dropdown menu. When the user clicks the button to view the dropdown menu, the relevant folder is searched for JSON files. All these files are parsed from JSON back into AnnotationData objects,
-                    which are stored in a list. When one is selected, an <i>OnSelectAnnotation</i>event is fired which holds the relevant AnnotationData object. All subscribers of this event will restore the part of the scene that they are responsible for back to the state
-                    encapsulated by the AnnotationData object received (for instance, CameraController restores camera position,rotation and displacement, ModelHandler restores the colours of the model segments, etc).
+                    which are stored in a list. 
                 <img src = "assets/img/Code snippets/JsonToAnnotationNoComment.png">
                 <p class="text-muted">AnnotationSelector.cs</p>
+                When an annotation from the dropdown list is selected, an <i>OnSelectAnnotation</i> event is fired which holds the relevant AnnotationData object. All subscribers of this event will restore the part of the scene that they are responsible for back to the state
+                encapsulated by the AnnotationData object received (for instance, CameraController restores camera position,rotation and displacement, ModelHandler restores the colours of the model segments, etc).
+                <img src = "assets/img/Code snippets/onIndexChanged.PNG">
+                <p class = "text-muted">AnnotationSelector.cs</p>
 
                 <!-- CROSS SECTIONAL VIEWER -->
 
@@ -294,7 +304,7 @@
                     The concept that our cross-sectional view shader employs is similar to the idea of  <i>occlusion culling</i>, in which an object will only be rendered by a camera if it is between the near and far clipping planes of the camera. 
                     If an object is partially between these two planes, only its polygons between the two planes will be drawn to the screen.
                     Our shader (which we based heavily on <a href="url">this open-source shader</a>, as well as the shaders included in the GLTFUtility library that were already being used) determines which pixels of the model should not be drawn to the screen,
-                    based on the position and orientation of a plane that is controlled by the user using sliders.<br> If the <b>dot product</b> of:
+                    based on the position and orientation of a plane that can be controlled by the user using sliders.<br> If the <b>dot product</b> of:
                     <ui>
                         <li>The distance between the <i>world space</i> position of a vertex on the mesh of the model and the centre of the plane and</li>
                         <li>The plane's normal</li>
@@ -309,10 +319,10 @@
                 <p class = "text-muted">The <b>input</b> struct, that holds the data from the model's mesh that will be used to determine how the shader interacts with the model
                 <img src = "assets/img/Code snippets/cross section shader 3.PNG">
                 <p class="text-muted">The <b>surface function</b>, which fills in the <b>SurfaceOutputStandard</b> struct. This ultimately defines how the model is rendered.</p>
-                <p class="text-body">This is the shader that is applied to the model after it has first loaded in (in the <b>loadModel</b> coroutine in the <i>Model Rendering and Initialisation section</i>).
-                    However, initially, all of the model's geometry is visible due to the plane being initialised with a y position of <i>modelCentre +modelRadius</i>, which will always be greater than the height of
+                <p class="text-body">This is the shader that is applied to the model after it has first loaded in. However, initially, all of the model's geometry is visible due to the plane being initialised with a y position of <i>modelCentre +modelRadius</i>, which will always be greater than the height of
                     the model itself as this radius represents the bounding sphere of the renderer of the model.
-                    When the user first presses the cross-sectional view icon, the plane controller is enabled and a different shader is applied to the model. This shader turns the pixels above the plane black.
+                    When the user first presses the cross-sectional view icon, the plane controller is enabled and a different shader is applied to the model. This shader turns the pixels above the plane black, but is otherwise
+                    very similar to the shader above.
                 </p>
                 <img src = "assets/img/Code snippets/enable plane controller.png">
                 <p class = "text-muted">PlaneController.cs</p>
@@ -328,13 +338,20 @@
                 <p class = "text-muted">PlaneController.cs</p>
                 <img src = "assets/img/Code snippets/material assigner update plane pos.png" style = "width:50">
                 <p class = "text-muted">MaterialAssigner.cs</p>       
-                
+                <p class = "text-body">Once the user confirms the cross section, the original shader is reapplied, and so the pixels of the model that were coloured black while the user was controlling
+                    the plane are discarded. To save computation, the _PlanePosition and _PlaneNormal properties are no longer updated as both the plane and model are stationary.
+                </p>
 
                  <!-- DICOM VIEWER -->
-
-
-                <h3 class="section-heading text-uppercase">DICOM Viewer</p>
-                <p class="text-muted">Description</p>
+                <h3 class="section-heading text-uppercase">DICOM Viewer</h3>
+                <p class="text-body">Due to the complexities underpinning the structure of DICOM files, we made use of an open source library for image viewing and manipulation called the <a href  = https://simpleitk.org>Simple Image ToolKit</a>. Using this library, reading a .dcm file from a chosen
+                filepath converts that .dcm into an object of type SITKImage. To display the image in our GUI, we had to temporarily write this image to a PNG and then load the PNG as a Texture2D object. This was necessary as Texture2D objects can be
+                displayed on Unity UI images, but SITKImage objects cannot.</p>
+                <img src = "assets/img/Code snippets/SIMPLEIMAGETOOLKIT.png">
+                <p class="text-muted">DicomToPNG.cs - This code for reading in a DICOM image and converting it is based on <a href = "https://simpleitk.readthedocs.io/en/master/link_DicomConvert_docs.html">this example code.</a></p>
+                <p class="text-body">The user is able to select multiple .dcms to view in a draggable panel. The functionality of this draggable panel is provided by the DicomController class. The paths the user selects are stored in an array. This array is then iterated through and, using the method above,
+                    each path in the array is converted into a Texture2D object and stored in a list. </p>
+                <img src = "assets/img/Code snippets/Update images.png">
             </div>
         <div class="row text-center"> 
                 <div class="col-md-4">
