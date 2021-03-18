@@ -14,8 +14,10 @@ We have another meeting booked in with Dr Owens for next Thursday in order to ga
 A number of our requirements feel quite tentative and difficult to tackle without further guidance at the moment. However, certain “Must Have” requirements are concrete. Dean also sent us five example glb models to begin experimenting with (brain, lung, kidneys, abdomen and bone). We've decided to store these files in the *StreamingAssets* folder of our project. This folder, regardless of the machine/directory/platform the application is running on, can be accessed from within scripts using *Application.streamingAssetsPath*. We're able to use *GLTFUtility* to load these models as runtime. We're going to do our first experiments with the model of the brain.
 
 ```
+GameObject brain;
+...
 string path = Path.Combine(Application.streamingAssetsPath, "brain.glb")
-GameObject model = Siccity.GLTFUtility.Importer.LoadFromFile(brain.glb)
+brain = Siccity.GLTFUtility.Importer.LoadFromFile(path) 
 ```
 
 Beyond being successfully able to  load the model into our Unity project at runtime, we've started to look at implementing elements of the GUI in separate Unity scenes to combine later:
