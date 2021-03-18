@@ -1,7 +1,7 @@
 ## 07/12/2020 – 13/12/2020
 
 We decided to streamline our development process by using Unity Teams Collaboration and Cloud Build. Cloud Build automatically builds the project every time a new change is made to the project. All 3 of us get an email detailing the changes of the most recent commit.
-![Email](./Images/Week9/Email.png)  
+![](./Images/Week 9/Email.png)  
 This has also reduced a healthy level of redundancy into our workflow, since we essentially have two remote repositories for our project. On the off-chance that something goes horribly wrong with one of them, we'll be safe as the other one will still exist. We just need to remember to push to both. 
 * The segment selector is now tied to the opacity slider, so the opacities of all layers can be adjusted individually, as well as being able to view them all individually. We now have 5 buttons in our scene that each select one of the 5 different segments of the brain. 
 ``` 
