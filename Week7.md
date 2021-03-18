@@ -11,14 +11,18 @@ In our weekly team meeting on Friday we were joined by Dr Arthur Owens, a radiol
 We played our video walkthrough, and discussed in further detail how HEE might want to make use of our system, one of these involving the development of a RESTful API.
 We have another meeting booked in with Dr Owens for next Thursday in order to gain further insight into the kind of UI that would suit a radiologist using the system.  
 
-A number of our requirements feel quite tentative and difficult to tackle without further guidance at the moment. However, certain “Must Have” requirements are concrete. Dean also sent us five example glb models to begin experimenting with (brain, lung, kidneys, abdomen and bone). We've decided to store these files in the *StreamingAssets* folder of our project. This folder, regardless of the machine/directory/platform the application is running on, can be accessed from within scripts using *Application.streamingAssetsPath*. We're able to use *GLTFUtility* to load these models as runtime. 
+A number of our requirements feel quite tentative and difficult to tackle without further guidance at the moment. However, certain “Must Have” requirements are concrete. Dean also sent us five example glb models to begin experimenting with (brain, lung, kidneys, abdomen and bone). We've decided to store these files in the *StreamingAssets* folder of our project. This folder, regardless of the machine/directory/platform the application is running on, can be accessed from within scripts using *Application.streamingAssetsPath*. We're able to use *GLTFUtility* to load these models as runtime. We're going to do our first experiments with the model of the brain.
 
+```
+string path = Path.Combine(Application.streamingAssetsPath, "brain.glb")
+GameObject model = Siccity.GLTFUtility.Importer.LoadFromFile(brain.glb)
+```
 
-We’ve started to look at implementing elements of the GUI in separate Unity scenes to combine later:
+Beyond being successfully able to  load the model into our Unity project at runtime, we've started to look at implementing elements of the GUI in separate Unity scenes to combine later:
 * Bryn – camera controls and accessing individual segments of the organ at run time.
 * Daniel – looking at how to change the transparency of the different different segments.
 * Shuai – GUI design.
 
-<br>
- doesn’t support the pushing of files above a certain size which our glb organ models unfortunately exceed. 
-We later fixed this by installing Github Large File Storage (glfs), and configuring it to track our example glb models.
+One issue that we encountered when trying to push to the github after storing these models we were given is that github doesn’t support the pushing of files above a certain size which our glb organ models unfortunately exceed. We fixed this by installing Github Large File Storage (glfs), and configuring it to track our example glb models.
+
+```git lfs track "*.psd"```
