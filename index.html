@@ -149,27 +149,29 @@
             </div>
             <div class = "text-center">
                 <h3 class = "section-heading text-uppercase">System Architecture Diagram</h3>
-                <img src = "assets/img/System architecture diagram again.png" style = "width:100%">
-                <p class = "text-muted">(WIP) The above System Architecture provides a high-level overview of our system, including the main features offered by the GUI and the filetypes
-                    involved. 
+                <img src = "assets/img/Updated system arch.png" style = "width:100%">
+                <p class = "text-muted">(WIP) This system architecture diagram provides a high-level overview of our system and its core functionalities. 
                 </p> 
+                <h3 class = "section-heading text-uppercase">Design Patterns</h3>
+                <h4 class = "my-3">Singleton pattern</h4>
+                <p class = "my-3"> A number of the classes in our codebase are dependent on the properties of the loaded model. The <b>ModelHandler</b> class holds a reference
+                    to the GameObject representing the loaded model, along with a number of other properties of the loaded model. The ModelHandler class is therefore a singleton to provide ease of access to the properties of the model
+                    to other classes in the codebase. We also defined another class, <b>EventManager</b>, that is also singleton (see below).
+                </p>
+                <h4 class = "my-3">Publisher-Subscriber pattern</h4>
+                <p> To reduce the dependencies between classes in our codebase we utilised the Publisher-Subscriber pattern. To do this, we created the <b>EventManager</b> class. The EventManager holds a reference to a number of different events, each of which is designed to trigger a certain action within the application. Each event has a corresponding public method which can be called to invoke the event. As the class is a singleton, any class can trigger these events without a reference to the EventManager, and any class can subscribe to these events without a reference to the EventManager.  
+                    So for instance, a button can fire an event when clicked. Any scripts that relate to this button will subscribe to this event. However, these scripts do not break if this button is deleted, nor does the button break if the scripts are deleted. Neither party requires a refernece to one another as all communication is handled by the EventManager. Any class that listens for events implements the <b>IEventManagerListener</b> interface.</p>
+                <h4 class = "my-3">Factory pattern</h4>
+                <p>I DON'T KNOW IF I WANNA MENTION THIS ONE YET</p>
                 <h3 class = "section-heading text-uppercase">Class Diagrams</h3>
                 <h4 class = "my-3">Model loading and initialisation</h4>
-                <img src = "assets/img/ModelLoadingUML2.png" style="width:100%">
-                <p class ="text-muted">(WIP explanatation) Makes a call to the GLTFUtility library to load in the appropriate files (glb and gltf), which Unity does not 
-                    natively support. </p>
+                <img src = "assets/img/Model loading and initialisation.png" style="width:100%">
+                <p class ="text-muted">The ModelHandler class loads the model (using the OrganFactory) and listens for EventManager events that relate to changing the state of a particular segment of the model </p>
                 <h4 class = "my-3">Annotations and storing scene state</h4>
-                <img src = "assets/img/Annotations2.png" style="width:100%">
-                <p class ="text-muted">(WIP explanatation)Annotations are used to store the current state of the scene along with text input by the user about that particular scene state.
+                <img src = "assets/img/Annotations and storing scene state (1).png" style="width:100%">
+                <p class ="text-muted">Annotations are used to store the current state of the scene along with text input by the user about that particular scene state.
                     Annotations are stored in the form of AnnotationData objects which can be parsed to and from JSON. The relevant data from the scene is used to initialise
                     these objects. This same data can be used to reinitialise the state of the scene when a particular annotation is selected.
-                </p>
-                <h4 class = "my-3">Event System</h4>
-                <img src = "assets/img/Event System.png" style ="width:100%">
-                <p class="text-muted">(WIP explanatation)The EventManager class is a singleton which holds a reference to a number of different events that will trigger actions within the scene.
-                All the classes that use the EventManager will invoke one of its public methods, firing the corresponding event in doing so. As the EventManager is a singleton,
-                any other class in the scene can subscribe to these events. This reduces dependencies between classes, in an effort to keep the software modular and more easily
-                extensible. Any class that needs to listen for these events implements the IEventManagerListener interface, mandating it to implement the subscribeToEvents() method.
                 </p>
             </div>
             <div class = "text-center">
@@ -183,7 +185,6 @@
                     <div class ="text-center"></div>
                         <h4 class="section-heading text-uppercases">Class Diagrams</h4>
                     </div>
-                    <p class="text-muted">Relationships between Unity GameObjects</p>
                 </div>
             </div>
         </div>
@@ -203,15 +204,23 @@
                                      <!-- RENDERING AND INITIALISATION --> 
                 <h3 class="section-heading text-uppercase">Rendering and Initialsing the Models</h3>
                 <p class="text-body">Our application loads and renders GLB AND GLTF files at runtime. Unity, however, does not natively support these file types. In order to load the models into the application
-                    we made use of <a href="https://github.com/Siccity/GLTFUtility">GLTFUtility</a>, an open source library that supports runtime import of GLB/GLTF files into Unity. It converts the data in the GLB/GLTF files into Unity GameObjects with a MeshFilter
-                    and MeshRenderer component attached. These components allow Unity to render the model.<br>
+                    we made use of <a href="https://github.com/Siccity/GLTFUtility">GLTFUtility</a>, an open source library that supports runtime import of GLB/GLTF files into Unity. It converts the data in the GLB/GLTF files into a number of Unity GameObjects with a MeshFilter
+                    ,MeshRenderer and Material component attached. Each of these GameObjects represents a segment of the loaded model.
+                    <br>
+                    <ul>
+                        <li>The MeshFilter and MeshRenderer components determine how the geometry/shape of the loaded model are renderered.</li>
+                        <li>The Materials component determines how the surface of the model is rendered (the colour of the model, how it interacts with Unity lights and how much of the geometry
+                            should be drawn to the screen). </li>
+                    </ul>
                     <img src = "assets/img/Code snippets/Organ constructor.png">
                     <p class= "text-muted"><i> Organ.cs</i></p>
                     <img src = "assets/img/Code snippets/loadModelbetter.png">
                     <p class = "text-muted>"><i>ModelHandler.cs</i></p>
                 <p class="text-body"> The model is loaded and initialised within a <i>coroutine</i>. The condition in the <i>yield</i> statement is evaluated each frame, and if it is false, control is passed back to the 
                     calling function so that other code can continue to execute while the model is being loaded. Once the condition is true, the remaining code executes and fully initialises the model. The line 
-                    <b>MaterialAssigner.assignToAllChildren</b> is described more in later sections.
+                    <b>MaterialAssigner.assignToAllChildren</b> is described more in later sections. Note that the ModelHandler class is a <i>singleton</i>. Although singletons are often seen as an antipattern, its
+                    use here is appopriate since there is only ever one model being renderered in the scene. The size and position of the model do directly influence a number of other classes, so having ModelHandler as singleton
+                    prevents them from needing to hold a reference a ModelHandler object.
                 <p class="text-muted"></p>
 
                 
@@ -220,24 +229,24 @@
 
                 <h3 class="section-heading text-uppercase">Camera Controls</h3>
                 <p class = "text-body">The user is able to rotate the camera about a pivot position, zoom in and out, and translate the camera left, right, up and down using keybinds.
-                    This pivot is initialised to the origin (0,0,0), as this is the position that the model is loaded in. However, this position can be changed by means of the PivotController.</p>
-                <img src = "assets/img/Code snippets/All camera stuff.png">
+                    This pivot is initialised to the centre of the model (the <i>modelCentre variable of the ModelHandler class</i>).</p>
+                <img src = "assets/img/Code snippets/New snippets/camera controls updated.png">
                 <p class = "text-muted">CameraController.cs</p>
                 <p class = "text-body">The rotation of the camera is determined by the direction vector of the pointer. This rotation is achieved using the <b>Rotate</b> method, which
                     is a public method of the <b>Transform</b> class provided in the UnityEngine namespace. All Unity GameObjects have a Transform component attached that describes its position and orientation in the scene.
                     The displacement (in the z axis) of the camera from the pivot is determined by the movement of the Scroll wheel. 
-                    Every frame, the camera's position is set equal to the position of the pivot. It is then rotated by the rotate method, and translated away from the 
+                    Every frame, the camera's position is set equal to the position of the pivot. It is then rotated using the rotate method, and translated away from the 
                     pivot using the <b>Translate</b> method. This creates the desired effect, in that the camera is always centered on the pivot.
                 </p>
-                <p>The displacement vector is also used to store the amount displaced in the x and y axes when the keybinds are used.</p>
+                <p>The <i>displacement</i> vector is also used to store the amount displaced in the x and y axes when the keybinds are used.</p>
                 <p class = "text-body"></p>
                 <p class = "text-muted"></p>
                 <img src = "assets/img/Code snippets/SetCameraDistance.png">
                 <p class = "text-muted">CameraController.cs</p>
                 <p class = "text-body">In order to allow models of different sizes to be loaded into the application and viewed in the same way, the initial displacement
-                    of the camera from the pivot is determined by <i>modelRadius</i>, the radius of the model (more accurately, the radius of the sphere that bounds the renderer of the model).
+                    of the camera from the pivot is determined by <i>modelRadius</i>: the radius of the model (more accurately, the radius of the sphere that bounds the renderer of the model).
                     This radius is also used to determine the <i>scrollspeed</i> attribute of the CameraController class, which means the speed at which the user can zoom in is 
-                    proportional to the size of the model.
+                    proportional to the size of the model.  
                 </p>
                 <img src = "assets/img/Code snippets/resetCameralessAgain.png">
                 <p class = "text-muted">CameraResetter.cs</p>
@@ -246,6 +255,17 @@
                 <b>startPos + (TargetPos - startPos) * ratio</b>, where <b>ratio</b> is the ratio of the elapsed time since the camera started resetting to the desired total reset time,
                 which is set to 2 seconds in our application. When the ratio is one, the Camera's position will be equal to the target position and the lerp function will no longer be called.
                 </p>
+                <p class = "text-body">Finally, the user can adjust the position about which the camera is centred using the <b>pivot controller</b>. The PivotController class holds a reference to the 
+                pivot itself (which is represented in the scene as a sphere), as well as a reference to three sliders. These sliders can be used to control the position of the pivot in the x,y and z axes.
+                In much the same way that the <i>scrollspeed</i> and <i>cameraDistance</i> variables in the <b>CameraController</b> class are proportional to the <i>modelRadius</i>, the maximum and minimum values
+                of these sliders is determined by <i>modelRadius</i>.</p>
+                <img src = "assets/img/Code snippets/New snippets/initialise slider.png">
+                <p class = "text-muted">PivotController.cs - function used to initialise the sliders</p>
+                <img src = "assets/img/Code snippets/New snippets/changeXPos Slider.png">
+                <p class = "text-muted">PivotController.cs - callback passed to the x position slider to demonstrate how the sliders work</p>
+                
+            
+            </p>
 
                                 <!-- ADJUST COLOUR AND OPACITY -->
 
@@ -253,9 +273,10 @@
                 <h3 class="section-heading text-uppercase">Changing Model Colour and Opacity</h3>
                 <p class="text-body"> To allow the opacity and colour of the segments of loaded models to be changed, our code directly accesses the renderers of the models.
                 </p>
-                <img src="assets/img/Code snippets/Adjust colour and opacity.png" style = "width:100">
+                <img src="assets/img/Code snippets/New snippets/AdjustANDCHANGEOPACITY updated.png" style = "width:100">
                 <p class ="text-muted"> MaterialAssigner.cs </p>
-                <p class = "text-body"><i>GetComponent&ltRenderer&gt()</i> returns the renderer of the GameObject/model segment passed to the functions. By changing the values
+                <p class = "text-body"><i>GetComponent&ltRenderer&gt()</i> returns the renderer of the GameObject/model segment passed to the functions. <i>Note:GetComponent<></i> is a very expensive operation, which is why we obtain a reference to the renderer once
+                at the start of the function to prevent the need to call it again.</i> By changing the values
                     of its material, we change how the Unity renderer displays the GameObjects on screen. MaterialAssigner is a static class and houses all methods related to the assignment and manipulation of the materials of loaded models. The functions above in particular
                 are called as part of callback actions to different events triggered by the user (see below).</p>
                 <img src="assets/img/Code snippets/col and opacity 2.png" style = "width:100">
@@ -263,7 +284,7 @@
                 <p class = "text-body"> We initially encountered some draw ordering issues when attempting to adjust the opacity of the different segments of the model. We resolved these issues by
                     making changes to the shaders our models were using (<i>see Cross Sectional Viewer</i>) and by adjusting the RenderQueue attribute of the material applied to each of the segments of the model. The higher the RenderQueue value, 
                     the later an object is drawn to the screen. By making it so that segments that are hidden by other segments are drawn to the screen later, it is possible to see them beneath the outer segments when the opacity of the outer 
-                    segments is reduced. This is the purpose of the <b>MaterialAssigner.assignToAllChildren</b> function called in the <i>loadModel</i> coroutine above.</p>
+                    segments are reduced. This is the purpose of the <b>MaterialAssigner.assignToAllChildren</b> function called in the <i>loadModel</i> coroutine above.</p>
                 <img src = "assets/img/Code snippets/assignToAllChildren.png">
                 <p class = "text-muted">MaterialAssigner.cs</p>
                 <img src = "assets/img/Code snippets/assignNewMaterial.png">
@@ -301,25 +322,25 @@
                 <h3 class="section-heading text-uppercase">Cross Sectional Viewer</h3>
                 <p class="text-body">To implement this feature we made use of <i>surface shaders</i> written in High Level Shader Language.
                     Surface shaders provide a code generation approach to writing shaders that interact with light in Unity. 
-                    The concept that our cross-sectional view shader employs is similar to the idea of  <i>occlusion culling</i>, in which an object will only be rendered by a camera if it is between the near and far clipping planes of the camera. 
+                    The concept that our cross-sectional viewer shader employs is similar to the idea of  <i>occlusion culling</i>, in which an object will only be rendered by a camera if it is between the near and far clipping planes of the camera. 
                     If an object is partially between these two planes, only its polygons between the two planes will be drawn to the screen.
                     Our shader (which we based heavily on <a href="url">this open-source shader</a>, as well as the shaders included in the GLTFUtility library that were already being used) determines which pixels of the model should not be drawn to the screen,
                     based on the position and orientation of a plane that can be controlled by the user using sliders.<br> If the <b>dot product</b> of:
                     <ui>
-                        <li>The distance between the <i>world space</i> position of a vertex on the mesh of the model and the centre of the plane and</li>
+                        <li>The distance between the <i>world space</i> position of the pixel on the model currently being evaluated by the shader and the centre of the plane <b>AND</b></li>
                         <li>The plane's normal</li>
                     is positive, then the current pixel is <b>above</b> the plane, so is discarded.
                 </p>
                 <p>Below I've included the shader itself</p><br>
                 <img src = "assets/img/Code snippets/Shader properties.PNG">
                 <p class = "text-muted">The list of <b>properties</b> which can be accessed externally (in the Unity inspector, in c# scripts, etc).</p>
-                <img src = "assets/img/Code snippets/Shader pass.PNG">
-                <p class = "text-muted">The <b>subshader</b> block, where we define the RenderingMode as transparent and perform an initlal <b>pass</b>.
+                <img src = "assets/img/Code snippets/New snippets/subshader again.png">
+                <p class = "text-muted">The <b>subshader</b> block, where we define the RenderingMode as transparent and perform an initial <b>pass</b>, meaning a first render of the object.
                 <img src = "assets/img/Code snippets/shader input.PNG">
-                <p class = "text-muted">The <b>input</b> struct, that holds the data from the model's mesh that will be used to determine how the shader interacts with the model
-                <img src = "assets/img/Code snippets/cross section shader 3.PNG">
-                <p class="text-muted">The <b>surface function</b>, which fills in the <b>SurfaceOutputStandard</b> struct. This ultimately defines how the model is rendered.</p>
-                <p class="text-body">This is the shader that is applied to the model after it has first loaded in. However, initially, all of the model's geometry is visible due to the plane being initialised with a y position of <i>modelCentre +modelRadius</i>, which will always be greater than the height of
+                <p class = "text-muted">The <b>input</b> struct, that holds the relevant data from the model's mesh,
+                <img src = "assets/img/Code snippets/New snippets/surf again.png"> 
+                <p class="text-muted">The <b>surface function</b>, which fills in the <b>SurfaceOutputStandard</b> struct based on the values of the Input struct. This ultimately defines how the model is rendered.</p>
+                <p class="text-body">The above shader is used to create the material that is applied to the model after it has first loaded in <i>(see the assignNewMaterial function in the MaterialAssigner class above)</i>. However, initially, all of the model's geometry is visible due to the plane being initialised with a y position of <i>modelCentre +modelRadius</i>, which will always be greater than the height of
                     the model itself as this radius represents the bounding sphere of the renderer of the model.
                     When the user first presses the cross-sectional view icon, the plane controller is enabled and a different shader is applied to the model. This shader turns the pixels above the plane black, but is otherwise
                     very similar to the shader above.
