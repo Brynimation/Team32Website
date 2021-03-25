@@ -77,13 +77,24 @@
                     <h2 class="section-heading text-uppercase">Requirements</h2>
                 </div>
            <div class="row text-center">
-                    <div class="col-md-4">
+                    <div class = "text-center">
                         <h4 class="my-3">Project Background</h4>
+                        <p class ="my-3"> The HoloRepository is an open source, FHIR enabled research project that uses pretrained neural networks to convert from 2D CT and MRI DICOM scans to 3D models in the form of GLB and GLTF files.</p>
+
                         <p class="text-muted"></p>
                         <h4 class="my-3">Project Goals</h4>
+                        <p class ="my-3"> Our project aims to provide a convenient way for clinicians and educators to view, manipulate and store information about 3D medical models. The HoloRepository Portable 2021 serves as a proof of 
+                            concept for an application that could be used in both a clinical and educational setting.
                         <p class="text-muted"></p>
                         <h4 class="my-3">Requirements Gathering</h4>
-                        <p class = "text-muted">Sketches, interviews, etc</p>
+                        <p class = "my-3">The first stage of our requirements gathering involved meetings and interviews with our clients. These meetings enabled us to gain a better understanding of what we needed to build, and in doing so allowed us to 
+                            establish an initial set of must-have requirements.<br>
+                            To further our requirements gathering we carried out semi-structured interviews with pseudo-users. We chose to carry out semi-structured interviews to ensure that we would always get answers to the questions we had prepared, but also allowed us to probe deeper by asking additional questions 
+                            if the interviewee said anything insightful that we had not considered initially. This ensured that the requirements we gathered were a truer reflection of what a user would look for in a medical model viewer application.<br>
+                            Over the course of the development of our project, we met with our clients on a weekly basis. Our requirements have been expanded upon and subject to change over the course of development based on the requests of our clients,
+                            but by meeting and demonstrating our progress frequently, we've ensured that our application is indeed delivering what our clients had in mind.
+                        </p>
+                        <h3 class = "text-muted">Semi-Structured interviews</p>
                         <h4 class="my-3">Personas and Scenarios</h4>
                         <p class="text-muted">hi</p>
                         <h4 class="my-3">Use Cases</h4>
@@ -91,6 +102,7 @@
                         <h4 class="my-3">Moscow Requirements List</h4>
                         <p class="text-muted">*Subject to change</p>
                     </div>
+                </div>
                 </div>
                 </div>
         </section>
@@ -154,19 +166,21 @@
                 </p> 
                 <h3 class = "section-heading text-uppercase">Design Patterns</h3>
                 <h4 class = "my-3">Singleton pattern</h4>
-                <p class = "my-3"> A number of the classes in our codebase are dependent on the properties of the loaded model. The <b>ModelHandler</b> class holds a reference
-                    to the GameObject representing the loaded model, along with a number of other properties of the loaded model. The ModelHandler class is therefore a singleton to provide ease of access to the properties of the model
-                    to other classes in the codebase. We also defined another class, <b>EventManager</b>, that is also singleton (see below).
+                <p class = "my-3"> A number of the classes in our codebase are dependent on the properties of the loaded model (such as its centre and radius). The <b>ModelHandler</b> class  
+                    holds a reference to the <b>Organ</b> object, which is an abstract class that represents the loaded model. The ModelHandler class is responsible for loading in the Organ (see the <i>Model loading and initialisation</i> class diagram below), but also calculating the properties of the loaded Organ that the other classes rely on.
+                    In order to provide other classes ease of access to these properties, ModelHandler is made a singleton. Although the Singleton pattern is often seen as an antipattern, its use here is appropriate
+                    as only one model is ever loaded into the application at any given time. Our <b>EventManager</b> class (see below) is also a singleton.
                 </p>
                 <h4 class = "my-3">Publisher-Subscriber pattern</h4>
                 <p> To reduce the dependencies between classes in our codebase we utilised the Publisher-Subscriber pattern. To do this, we created the <b>EventManager</b> class. The EventManager holds a reference to a number of different events, each of which is designed to trigger a certain action within the application. Each event has a corresponding public method which can be called to invoke the event. As the class is a singleton, any class can trigger these events without a reference to the EventManager, and any class can subscribe to these events without a reference to the EventManager.  
-                    So for instance, a button can fire an event when clicked. Any scripts that relate to this button will subscribe to this event. However, these scripts do not break if this button is deleted, nor does the button break if the scripts are deleted. Neither party requires a refernece to one another as all communication is handled by the EventManager. Any class that listens for events implements the <b>IEventManagerListener</b> interface.</p>
+                    So for instance, a button can fire an event when clicked. Any scripts that relate to this button will subscribe to this event. However, these scripts do not break if this button is deleted, nor does the button break if the scripts are deleted. Neither party requires a reference to one another as all communication is handled by the EventManager. Any class that listens for events implements the <b>IEventManagerListener</b> interface.</p>
                 <h4 class = "my-3">Factory pattern</h4>
-                <p>I DON'T KNOW IF I WANNA MENTION THIS ONE YET</p>
+                <p>Our application is shipped with six example glb models that can be viewed by the user. These can be selected from a dropdown menu. Each example model is represented by a corresponding class that is a subclass of the abstract Organ class. We use the <b>OrganFactory</b> class to instantiate the appropriate subclass of Organ
+                based on the model chosen to view by the user at runtime. If the user chooses to load a model from local storage, the default concrete subclass of the abstract Organ class is instantiated. </p>
                 <h3 class = "section-heading text-uppercase">Class Diagrams</h3>
-                <h4 class = "my-3">Model loading and initialisation</h4>
-                <img src = "assets/img/Model loading and initialisation.png" style="width:100%">
-                <p class ="text-muted">The ModelHandler class loads the model (using the OrganFactory) and listens for EventManager events that relate to changing the state of a particular segment of the model </p>
+                <h4 class = "my-3">Model Loading and Initialisation</h4>
+                <img src = "assets/img/Model loading class diagram.png" style="width:100%">
+                <p class ="text-muted">The ModelHandler class loads and initialises the model (using the OrganFactory), and listens for EventManager events that relate to changing the state of a particular segment of the loaded model. </p>
                 <h4 class = "my-3">Annotations and storing scene state</h4>
                 <img src = "assets/img/Annotations and storing scene state (1).png" style="width:100%">
                 <p class ="text-muted">Annotations are used to store the current state of the scene along with text input by the user about that particular scene state.
