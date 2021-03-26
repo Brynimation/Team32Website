@@ -84,14 +84,14 @@
                         <p class="text-muted"></p>
                         <h4 class="my-3">Project Goals</h4>
                         <p class ="my-3"> Our project aims to provide a convenient way for clinicians and educators to view, manipulate and store information about 3D medical models. The HoloRepository Portable 2021 serves as a proof of 
-                            concept for an application that could be used in both a clinical and educational setting.
+                            concept for an application that could be integrated into the existing HoloRepository ecosystem and used in both a clinical and educational setting,
                         <p class="text-muted"></p>
                         <h4 class="my-3">Requirements Gathering</h4>
                         <p class = "my-3">The first stage of our requirements gathering involved meetings and interviews with our clients. These meetings enabled us to gain a better understanding of what we needed to build, and in doing so allowed us to 
                             establish an initial set of must-have requirements.<br>
-                            To further our requirements gathering we carried out semi-structured interviews with pseudo-users. We chose to carry out semi-structured interviews to ensure that we would always get answers to the questions we had prepared, but also allowed us to probe deeper by asking additional questions 
+                            To further our requirements gathering we carried out semi-structured interviews with pseudo-users (which we've included snippets of below). We chose to carry out semi-structured interviews to ensure that we would always get answers to the questions we had prepared, but also allowed us to probe deeper by asking additional questions 
                             if the interviewee said anything insightful that we had not considered initially. This ensured that the requirements we gathered were a truer reflection of what a user would look for in a medical model viewer application.<br>
-                            Over the course of the development of our project, we met with our clients on a weekly basis. Our requirements have been expanded upon and subject to change over the course of development based on the requests of our clients,
+                            Over the course of the development of our project, we met with our clients on a weekly basis. Our requirements have been expanded upon and subject to change over the course of development according to the requests of our clients,
                             but by meeting and demonstrating our progress frequently, we've ensured that our application is indeed delivering what our clients had in mind.
                         </p>
                         <h3 class = "text-muted">Semi-Structured interviews</p>
@@ -289,7 +289,7 @@
                 </p>
                 <img src="assets/img/Code snippets/New snippets/AdjustANDCHANGEOPACITY updated.png" style = "width:100">
                 <p class ="text-muted"> MaterialAssigner.cs </p>
-                <p class = "text-body"><i>GetComponent&ltRenderer&gt()</i> returns the renderer of the GameObject/model segment passed to the functions. <i>Note:GetComponent<></i> is a very expensive operation, which is why we obtain a reference to the renderer once
+                <p class = "text-body"><i>GetComponent&ltRenderer&gt()</i> returns the renderer of the GameObject/model segment passed to the functions. <i>Note:GetComponent&lt&gt</i> is a very expensive operation, which is why we obtain a reference to the renderer once
                 at the start of the function to prevent the need to call it again.</i> By changing the values
                     of its material, we change how the Unity renderer displays the GameObjects on screen. MaterialAssigner is a static class and houses all methods related to the assignment and manipulation of the materials of loaded models. The functions above in particular
                 are called as part of callback actions to different events triggered by the user (see below).</p>
@@ -388,22 +388,6 @@
                     each path in the array is converted into a Texture2D object and stored in a list. </p>
                 <img src = "assets/img/Code snippets/Update images.png">
             </div>
-        <div class="row text-center"> 
-                <div class="col-md-4">
-                    <h3 class="my-4">Main Technologies</h3>
-                    <p class="text-muted"></p>
-                    <h4 class="my-3">Unity</h4>
-                    <p class="text-muted">Unity Editor, Unity Cloud, Unity Collaborate (for devOps)</p>
-                    <h4 class="my-3">Visual Studio Code</h4>
-                    <p class="text-muted"></p>
-                    <h4 class="my-3">GLTFUtility</h4>
-                    <p class="text-muted"></p>
-                    <h3 class="my-4">Implementation of Key features</h3>
-                    <h4 class="text-muted">Loading the models</p>
-                    
-                </div>
-            </div>
-        </div>
     </section>
 
 
@@ -413,36 +397,32 @@
     <section class="page-section" id="Testing">
         <div class="container">
             <div class="text-center">
-                <h2 class="section-heading text-uppercase">Testing</h2>
+                <h3 class="section-heading text-uppercase">Testing</h3>
+                <h3 class= "section-heading text-uppercase"></h3>
+
+                <h3 class = "section-heading text-uppercase">Unit/Integration testing</h4>
+                <p class = "my-3">The nature of our application made it fundamentally difficult to Unit Test. As our application is built in Unity, the majority of our classes inherit from the MonoBehaviour class.
+                    Unlike other classes in C#, MonoBehaviours cannot be instantiated directly, but must be instead attached to an existing Unity GameObject using the <i>AddComponent&lt&gt</i> function. Furthermore, due to a number of classes being
+                    dependent on the loaded model, testing individual modules of code proved difficult. <br>
+                    However, using the Unity Testing FrameWork, we were able to create tests to verify a few of the core functionalities of our system. Namely, we wrote tests to verify that the Events of our EventManager class could be invoked and received
+                    by the relevant listener classes, whether the models were being loaded with the expected number of segments and that our AnnotationData objects could be parsed to and from JSON. </p>
+                <img src = "assets/img/ModelLoadingTests.PNG">
+                <p class = "text-muted">ModelLoadingTests.cs - Involves setting up a small test scene using dummy GameObjects before functionality can be tested.</p>
+                <img src = "assets/img/TestRunner.PNG">
+                <p class = "text-muted">Running the playmode tests using the Test Runner.</p>
             </div>
+            <div class = "text-centre">Compatibility and Performance Testing</div>
+            <p class = "my-3">To ensure that our application ran and ran well on devices beyond those being used to develop it, throughout development we tested our application on a number of devices. Namely those of our clients</p>
+
         <div class="row text-center">
-                <div class="col-md-4">
-                    <h4 class="my-3">Testing</h4>
-                    <p class="text-muted"></p>
-                </div>
+            <div class = "text-center">
+                <h4 class="my-3">Testing Strategy</h4>
+            </div>
             </div>
         </div>
     </section>
 
     <!-- Testing -->   
-
-    <section class="page-section" id="Evaluation">
-        <div class="container">
-            <div class="text-center">
-                <h2 class="section-heading text-uppercase">Evaluation</h2>
-            </div>
-        <div class="row text-center">
-                <div class="col-md-4">
-                    <h4 class="my-3">Evaluation</h4>
-                    <p class="text-muted"></p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
-
 
    
         <!-- Footer-->
