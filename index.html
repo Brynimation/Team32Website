@@ -35,6 +35,7 @@
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Implementation">Implementation</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Testing">Testing</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Evaluation">Evaluation</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Appendices">Appendicies</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="https://holorepositoryportable2021developmentblog.wordpress.com/">Blog</a></li>
                     </ul>
                 </div>
@@ -415,7 +416,7 @@
             </div>
     </section>
 
-    <!-- Testing -->   
+    <!----- TESTING  ------->   
 
     <section class="page-section" id="Testing">
         <div class="container">
@@ -484,34 +485,81 @@
                 </div>
                 <p class ="my-3"></p>
             </div>
-        <div class="row text-center">
-            <div class = "text-center">
-                <h4 class="my-3">Testing Strategy</h4>
-            </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Testing -->   
 
-   
-        <!-- Footer-->
-        <footer class="footer py-4">
+            <!--Appendicies-->
+        <section class="page-section" id="Appendicies">
             <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-4 text-lg-left">Copyright © Your Website 2020</div>
-                    <div class="col-lg-4 my-3 my-lg-0">
-                        <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                    <div class="col-lg-4 text-lg-right">
-                        <a class="mr-3" href="#!">Privacy Policy</a>
-                        <a href="#!">Terms of Use</a>
-                    </div>
+                <div class="text-center">
+                    <h3 class="section-heading text-uppercase">Testing</h3>
+                    <h3 class= "section-heading text-uppercase"></h3>
+    
+                    <h3 class = "section-heading text-uppercase">PlayMode tests in Unity</h3>
+                    <p class = "my-3">The nature of our application made it fundamentally difficult to Unit Test. As our application is built in Unity, the majority of our classes inherit from the MonoBehaviour class.
+                        Unlike other classes in C#, MonoBehaviours cannot be instantiated directly, but must be instead attached to an existing Unity GameObject using the <i>AddComponent&lt&gt</i> function. Furthermore, due to a number of classes being
+                        dependent on the loaded model, testing individual modules of code proved difficult. <br>
+                        However, using the Unity Testing FrameWork, we were able to create tests to verify a few of the core functionalities of our system. Namely, we wrote tests to verify that the Events of our EventManager class could be invoked and received
+                        by the relevant listener classes, whether the models were being loaded with the expected number of segments and that our AnnotationData objects could be parsed to and from JSON. </p>
+                    <img src = "assets/img/ModelLoadingTests.PNG">
+                    <p class = "text-muted">ModelLoadingTests.cs - Involves setting up a small test scene using dummy GameObjects before functionality can be tested.</p>
+                    <img src = "assets/img/TestRunner.PNG">
+                    <p class = "text-muted">Running the playmode tests using the Test Runner.</p>
+                    <h3 class = "section-heading text-uppercase">User acceptance testing</h3>
+                    <h4 class = "section-heading text-uppercase">Alpha testing</h4>
+                    <div class = "row text-left">
+                        <p class = "my-3">Over the course of the second term of our development, we regularly sent builds of our project to our clients. Our clients would provide us with feedback on the project with each iteration we sent,
+                            often making suggestions on how things could be changed. Although this testing was relatively informal, it was hugely beneficial in that:
+                        <ul>
+                            <li>It allowed our clients to have a hands-on experience of using our application, which made it much easier for them to comment on our progress (compared to us simply sharing our screen and demonstrating our progress). This made the feedback they 
+                                provided more valuable, as the feedback was generated from actual experience using the application. The following requirements from our MoSCoW list were actually gathered from our clients testing and providing feedback on iterations of the application:
+                            <ul>
+                                <br>
+                                <li>Have tool-tips appear over elements of the GUI when the pointer hovers over them.</li>
+                                <li>Allow the user to change the position about which the camera is centred.</li>
+                                <li>Have a full-screen mode of the application, which hides all GUI elements. </li>
+                                <li>Allow the user to change the brightness of the background.</li>
+                                <br>
+                            </ul> 
+                            <li>In addition to testing usability, this process served as a form of compatibility testing. Sending these builds allowed us to verify that our application would run correctly on Windows devices beyond the devices it was being developed on. Specifically, we were able to verify 
+                                that our GUI scaled well for different screen sizes.
+                            </li>
+                        </ul> 
                 </div>
+                    <h4 class = "section-heading text-uppercase">Beta testing</h4> 
+                    <p class = "my-3">At the very end of development, we sent the final build of the project to potential users of the project and asked them to provide feedback. Though we were unfortunately unable to carry out user acceptance testing with actual clinicians, we hope that this information is useful if the HoloRepository Portable 2021 is ever iterated upon.</p>
+                    <br></br>
+                    <div class="row text-left">
+                        <div class="col-md-50">
+                            <h6 class="my-3"><b>Oscar (20),Second Year Biomedical Engineering Student</b></h6>
+                            <p class = "my-3"><b>Positives</b>: 
+                                <ul>
+                                    <li>The user interface provided a very pleasant experience. Everything was clear, and the labels which appeared when hovering over the icons made things easy to understand.</li> 
+                                    <li>Movement of the segmentation viewer was intuitive and very easy to control. </li>
+                                    <li>The opacity feature is really unique; it provides easy visual access to inner segments of the organ. Amazing design for viewing annotations. It was very useful to have the program teleport to the exact point where the annotation was saved.</li>
+                                    <li>The cross section feature was very versatile which improved visualisation.</li><br>
+                                </ul>
+                            <p class = "my-3"><b>Areas for improvement</b>
+                                <ul>
+                                <li>The colour wheel was a bit tedious to spin around.</li>
+                                <li>Adding a pan feature on the middle mouse button alongside the keyboard controls would improve ease of use.</li>
+                                <li>It would be optimal if the opacity slider is unique to each segment, resetting when viewing each segments.</li>
+                                <li>Providing an option to change size of the navigation bar, colour wheel and all other features on the UI would allow for easier visualisation especially when zooming into intricate sections of the segmentation.</li>
+                                </ul>
+                            </p>
+    
+                               
+                                 
+                            <h6 class= "my-3"><b>Sally (55),Educator</b></h6>
+                            </div>
+                        </div>
+                    </div>
+                    <p class ="my-3"></p>
+                </div>
+        <section class="page-section" id="Appendicies">
+            <div class="container">
+                <h3 class = "section-heading text-uppercase">Appendicies</h3>
             </div>
-        </footer>
+        </section>
         <!-- Portfolio Modals-->
         <!-- Modal 1-->
         <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
