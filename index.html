@@ -777,38 +777,359 @@
     <section class="bg-light" id="evaluation">
         <div class="container">
             <div class="row">
-                <div class="col-sm-4">
-                    <div class="team-member"><img class="rounded-circle mx-auto" src="assets/img/team/1.jpg">
-                        <h4>Kay Garland</h4>
-                        <p class="text-muted">Lead Designer</p>
-                        <ul class="list-inline social-buttons">
-                            <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                        </ul>
-                    </div>
+                <div class="col" style="text-align: center;">
+                    <h1>Evaluation ✅</h1>
+                    <h1 class="display-6" style="margin-top: 50px;margin-bottom: 30px;">Achievement Table</h1><table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Functional Requirements</th>
+                <th>Priority</th>
+                <th>State</th>
+                <th>Contributors</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Allow the user to select and view one of six example GLB models (brain, lung, kidney, bone, abdomen and eye).</td>
+                <td>Must have</td>
+                <td>🔘</td>
+                <td>All</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Allow the user to zoom the camera in and out on the view of the model.</td>
+                <td>Must have</td>
+                <td>🔘</td>
+                <td>Bryn</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Allow the user to rotate the camera about the model.</td>
+                <td>Must have</td>
+                <td>🔘</td>
+                <td>Bryn</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Allow the user to reset the camera position.</td>
+                <td>Must have</td>
+                <td>🔘</td>
+                <td>Bryn</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Allow the user to cycle through and select the different segments of the model.</td>
+                <td>Must have</td>
+                <td>🔘</td>
+                <td>Bryn</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>Allow the user to change the opacity of a model segment.</td>
+                <td>Must have</td>
+                <td>🔘</td>
+                <td>Bryn, Daniel</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>Allow the user to change the color of a model segment.</td>
+                <td>Must have</td>
+                <td>🔘</td>
+                <td>Shuai, Bryn</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>Allow the user to create text annotations and add them to the model. These annotations must also save the current view of the model.</td>
+                <td>Must have</td>
+                <td>🔘</td>
+                <td>Bryn, Shuai</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>CAllow the user to select an annotation to view. Selecting an annotation should return the user to the view of the model in which the annotaion was made.</td>
+                <td>Must have</td>
+                <td>🔘</td>
+                <td>Bryn</td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>Have a full-screen mode of the application which hides all GUI elements.</td>
+                <td>Must have</td>
+                <td>🔘</td>
+                <td>Bryn, Shuai</td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>Allow the user to change the brightness of the background.</td>
+                <td>Must have</td>
+                <td>🔘</td>
+                <td>Bryn, Shuai</td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td>Allow the user to view different cross sections of the model.</td>
+                <td>Should have</td>
+                <td>🔘</td>
+                <td>Bryn</td>
+            </tr>
+            <tr>
+                <td>13</td>
+                <td>Allow the user to load in and view a local GLB/GLTF file from local storage.</td>
+                <td>Should have</td>
+                <td>🔘</td>
+                <td>Bryn</td>
+            </tr>
+            <tr>
+                <td>14</td>
+                <td>Allow the user to change the position about which the camera is centred.</td>
+                <td>Should have</td>
+                <td>🔘</td>
+                <td>Bryn, Shuai</td>
+            </tr>
+            <tr>
+                <td>15</td>
+                <td>Have toll-tips appear over elements for GUI when the pointer hovers over them.</td>
+                <td>Should have</td>
+                <td>🔘</td>
+                <td>Bryn</td>
+            </tr>
+            <tr>
+                <td>16</td>
+                <td>Allow the user to load DICOM files from local storage and view them in a panel alongside the model.</td>
+                <td>Could have</td>
+                <td>🔘</td>
+                <td>Bryn, Shuai</td>
+            </tr>
+            <tr>
+                <td>17</td>
+                <td>Include an additional example GLB model which is an eye segment in the application.</td>
+                <td>Could have</td>
+                <td>🔘</td>
+                <td>Bryn</td>
+            </tr>
+            
+        </tbody>
+    </table>
+                    <p>&nbsp; &nbsp; &nbsp;&nbsp;</p><table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Non-Functional Requirements</th>
+                <th>Priority</th>
+                <th>State</th>
+                <th>Contributors</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>18</td>
+                <td>GUI design must be extensible to additional features.</td>
+                <td>Must have</td>
+                <td>🔘</td>
+                <td>Shuai</td>
+            </tr>
+            <tr>
+                <td>19</td>
+                <td>Application must be portable.</td>
+                <td>Must have</td>
+                <td>🔘</td>
+                <td>All</td>
+            </tr>
+           
+        </tbody>
+    </table>
+                    <p>&nbsp; &nbsp; &nbsp;&nbsp;</p><table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Key functionalities</th>
+                <th>100% completed</th>
+            </tr>
+        </thead>
+    <thead>
+            <tr>
+                <th>Optional functionalities</th>
+                <th>100% completed</th>
+            </tr>
+        </thead>
+        
+      
+    </table>
                 </div>
-                <div class="col-sm-4">
-                    <div class="team-member"><img class="rounded-circle mx-auto" src="assets/img/team/2.jpg">
-                        <h4>Larry Parker</h4>
-                        <p class="text-muted">Lead Marketer</p>
-                        <ul class="list-inline social-buttons">
-                            <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                        </ul>
-                    </div>
+            </div>
+            <div class="row" style="margin-top: 50px;">
+                <div class="col" style="text-align: center;">
+                    <h1 class="display-6" style="margin-top: 50px;margin-bottom: 30px;">Individual Contribution Table</h1><table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Work packages</th>
+                <th>Bryn</th>
+                <th>Shuai</th>
+                <th>Daniel (term 1 only)</th>
+ 
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Client liaison</th>
+                <td>100%</td>
+                <td>0%</td>
+                <td>0%</td>
+            </tr>
+            <tr>
+                <th>Requirement analysis</th>
+                <td>33%</td>
+                <td>33%</td>
+                <td>33%</td>
+            </tr>
+            <tr>
+                <th>Research</th>
+                <td>50%</td>
+                <td>30%</td>
+                <td>20%</td>
+            </tr>
+            <tr>
+                <th>UI design</th>
+                <td>5%</td>
+                <td>95%</td>
+                <td>0%</td>
+                
+            </tr>
+            <tr>
+                <th>Programing</th>
+                <td>85%</td>
+                <td>5%</td>
+                <td>10%</td>
+            </tr>
+            <tr>
+                <th>Testing</th>
+                <td>50%</td>
+                <td>50%</td>
+                <td>0%</td>
+            </tr>
+            <tr>
+                <th>Development blog</th>
+                <td>60%</td>
+                <td>25%</td>
+                <td>15%</td>
+            </tr>
+            <tr>
+                <th>Website editing</th>
+                <td>40%</td>
+                <td>60%</td>
+                <td>0%</td>
+            </tr>
+            <tr>
+                <th>Video editing</th>
+                <td>47.5%</td>
+                <td>47.5%</td>
+                <td>5%</td>
+            </tr>
+            <tr>
+                <th>Overall contribution</th>
+                <td>65%</td>
+                <td>30%</td>
+                <td>5%</td>
+            </tr>
+            <tr>
+                <th>Roles</th>
+                <td>Team leader, Lead programmer, Client liaison</td>
+                <td>UI design, Website editing, Testing</td>
+                <td>Programmer, Requirement analysis, Research</td>
+            </tr>
+           
+            
+        </tbody>
+    </table>
                 </div>
-                <div class="col-sm-4">
-                    <div class="team-member"><img class="rounded-circle mx-auto" src="assets/img/team/3.jpg">
-                        <h4>Diana Pertersen</h4>
-                        <p class="text-muted">Lead Developer</p>
-                        <ul class="list-inline social-buttons">
-                            <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                        </ul>
-                    </div>
+            </div>
+            <div class="row" style="margin-top: 50px;">
+                <div class="col" style="text-align: center;">
+                    <section data-aos="zoom-in-down" class="team-boxed">
+                        <div class="container">
+                            <h1 class="display-6" style="margin-top: 50px;margin-bottom: 30px;">Critical Evaluation</h1>
+                            <div class="row people">
+                                <div class="col-md-6 col-lg-4 item">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div data-bss-hover-animate="bounce" class="box">
+                                                <h3 class="name"><strong>UI</strong></h3>
+                                                <p class="description">Simplicity and clarity are the prior principles for our UI design. As the whole user interface is designed in the style of Neumorphism,&nbsp;we believe our UI meets our goals. All images in our application (except for the clients' logos) are designed by using Adobe Photoshop. In order to improve the user experience, we sent our application to our clients, friends and families, and received a lot of positive feedback from them. After constant modification and attempt, our UI becomes better. To give an example, we modified some icons to make their appearance and function do match. And since our users have a wide range of ages, this simple and intuitive design will make it easier for older users to use, while still being fashionable. As a result, we have a lot of confidence in our UI. </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div data-bss-hover-animate="bounce" class="box">
+                                                <h3 class="name"><strong>Stability</strong><br></h3>
+                                                <p class="description">In the progress of executing our application and testing, no phenomenon of crash has been noticed. Al, the bugs have been fixed while programming. However, some warnings may cause the application run slowly. This can be improved during future development. </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4 item">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div data-bss-hover-animate="bounce" class="box">
+                                                <h3 class="name"><strong>Functionality</strong><br></h3>
+                                                <p class="description">We have already finished all the tasks in our MoSCoW list, including all the key functions and the optional functions. According to the feedback provided by some users and the results of performance test, all the functions and features of our application can be executed well. Additionally, all the libraries that we used in our application are open-source such as GLTFUtility and SimpleImageToolKit. These libraries are well known and maintained by professional teams. This ensures that some of the functions that depend on these libraries in our projects will continue to work well after a long time. Overall, we believe the functionality of our application is great. </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div data-bss-hover-animate="bounce" class="box">
+                                                <h3 class="name"><strong>Compatibility</strong><br></h3>
+                                                <p class="description">Unfortunately, our application only support Windows operating system for now. The idea of cross-platform has been considered as a future work. To see more details please scroll down to see the section of "Future Works". </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4 item">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div data-bss-hover-animate="bounce" class="box">
+                                                <h3 class="name"><strong>Efficiency</strong><br></h3>
+                                                <p class="description">Apart from the example models, we have tested loading other models into the application using the open source models hosted on the Github of KHRONOS GROUP, the creators of GLTF and GLB files. All the models can be loaded in and successfully rendered in 2 seconds. However, as all these models are not medical models and are&nbsp;relatively simple to construct, we do not know how long it will take while loading in and render a professional medical model, which is more complex. This can be tested in future work. </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div data-bss-hover-animate="bounce" class="box">
+                                                <h3 class="name"><strong>Maintainability</strong><br></h3>
+                                                <p class="description">To ensure maintainability of the future work, we have many detailed comments on every C# script. These comments are able to help people who are reading the code for the first time understand quickly what the code means and their functions.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div data-bss-hover-animate="bounce" class="box">
+                                                <h3 class="name"><strong>Project Management</strong><br></h3>
+                                                <p class="description">In general, in addition to meeting with Clients and TA, we meet at least once a week to share our progress and upcoming tasks. Usually we use Trello to manage our progress. In addition to meetings, we often use Teams to connect with each other, assuming we can help each other quickly when they have a problem. We usually stored the project on GitHub and Unity Cloud.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div class="row" data-aos="fade-up" style="margin-top: 50px;">
+                <div class="col">
+                    <h1 style="text-align: center;">Future Work</h1>
+                    <p style="text-align: center;">If we had more time, we will try to add the following features:</p><p style="text-align: left;">
+    <ul>
+<li>Our application could be fully  integrated into the existing HoloRepository ecosystem. So, the existing HoloRepository is an open-source research project that uses pre-trained neural networks to convert from DICOM scans to GLB and GLTF files. Most of the example models included in our applications were actually generated using the HoloRepository.
+Future versions of our system could allow the clinician to select DICOMs which would then be converted into glb/gltf files using the HoloRepository before being rendered. This would be particularly useful in conjunction with the DICOM viewing feature, as they would be able to view the original scans alongside the model.</li>
+<li>Secondly, higher fidelity rendering of the models could be carried out, which could involve more detailed texturing and raytracing. This is something that is already being looked into by a third year student.</li>
+<li>Thirdly, the application could be made cross platform, so that clinicians and educators could use it on other Operating systems, as well as  their phones and tablets.</li>
+<li>Finally, the ability to open the application from well formatted URL links. The parameters of these links could include the model file to be loaded, along with the attributes of the AnnotationData class that we are currently using to store scene state. Clicking on one of these links would render the model passed as the parameter, and immediately take the user to the view of the model determined by the other parameters. </li>
+</ul>
+
+</p>
                 </div>
             </div>
         </div>
