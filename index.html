@@ -32,8 +32,9 @@
                     <li class="nav-item"><a class="nav-link" data-bss-hover-animate="rubberBand" href="#ui">UI</a></li>
                     <li class="nav-item"><a class="nav-link" data-bss-hover-animate="rubberBand" href="#system">System</a></li>
                     <li class="nav-item"><a class="nav-link" data-bss-hover-animate="rubberBand" href="#implementation">implementation</a></li>
-                    <li class="nav-item"><a class="nav-link" data-bss-hover-animate="rubberBand" href="#testing">testing</a></li>
-                    <li class="nav-item"><a class="nav-link" data-bss-hover-animate="rubberBand" href="#evaluation">evaluation</a></li>
+                    <li class="nav-item"><a class="nav-link" data-bss-hover-animate="rubberBand" href="#testing">Testing</a></li>
+                    <li class="nav-item"><a class="nav-link" data-bss-hover-animate="rubberBand" href="#evaluation">Evaluation</a></li>
+                    <li class="nav-item"><a class="nav-link" data-bss-hover-animate="rubberBand" href="#appendices">Appendices</a></li>
                     <li class="nav-item"><a class="nav-link" data-bss-hover-animate="rubberBand" href="https://brynimation.github.io/Team32Website/">Devblog</a></li>
                 </ul>
             </div>
@@ -109,14 +110,21 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="text-uppercase section-heading" data-aos="zoom-in-up" data-aos-duration="550">Requirements</h2>
-                    <h3 class="text-muted section-subheading" data-aos="zoom-in-up" data-aos-duration="500">What is included in this project?</h3>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xl-3 offset-xl-3 flex-column" data-aos="fade-up" data-aos-duration="700" style="margin: 0px 0px 0px 10px;width: 300px;margin-left: 20px;margin-right: 20px;background: rgba(50,50,50,0.5);">
                     <h1>&nbsp; &nbsp;&nbsp;</h1>
                     <h1 style="color: rgb(255,255,255);">Project Background</h1>
-                    <p style="color: rgb(222,222,222);">The HoloRepository is an open source, FHIR enabled research project that uses pre-trained neural networks to convert from 2D CT and MRI DICOM scans to 3D models in the form of GLB and GLTF files.</p>
+                    <p style="color: rgb(222,222,222);">Our clients are:
+                        <ul style = "color: rgb(222,222,222);">
+                        <li>Dr Dean Mohemedally (UCL)</li>  
+                        <li>Sheena Visram (GOSH/UCL)</li>
+                        <li>Costas Stylianou (Intel)</li>
+                        </ul>
+                    </p>
+                    <p style="color:rgb(222,222,222);"> The HoloRepository is an open source, FHIR enabled research project that uses pre-trained neural networks to convert from 2D CT and MRI DICOM scans to 3D models in the form of GLB and GLTF files. Our contribution
+                        to this project will put less of an emphasis on the use of these cutting edge technologies, but more on how their results (ie, the generated 3D organ models) could be best made use of.</p>
                 </div>
                 <div class="col offset-xl-1 d-xl-flex flex-column align-items-xl-start" data-aos="fade-up" data-aos-duration="1000" style="width: 300px;margin-left: 0px;background: rgba(50,50,50,0.5);">
                     <h1>&nbsp; &nbsp;&nbsp;</h1>
@@ -257,7 +265,7 @@
                 <div class="col"><img class="border rounded-0 border-primary shadow-lg" src="assets/img/Requirement_section/use_case_diagram_2.png" style="max-width: 80%;"></div>
             </div>
             <div class="row" data-aos="zoom-out-up" data-aos-duration="500" style="text-align: center;margin-top: 50px;">
-                <div class="col" data-aos="zoom-in-up"><p>User Cases List is shown <a href="https://drive.google.com/file/d/1ffTb2RLfbz_gq-bJMmmt2djbZPYw_3BG/view?usp=sharing">on Google Drive.</a></p></div>
+                <div class="col" data-aos="zoom-in-up"><p>Use Cases list: <a href="https://drive.google.com/file/d/1ffTb2RLfbz_gq-bJMmmt2djbZPYw_3BG/view?usp=sharing">on Google Drive.</a></p></div>
             </div>
         </div>
     </section>
@@ -266,36 +274,28 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="text-uppercase">Research</h2>
-                    <h3 class="text-muted section-subheading">We can see further by standing on the shoulders of giants.</h3>
                 </div>
                 <div class="col">
   <div class="p-5 bg-white rounded shadow mb-5">
     <!-- Rounded tabs -->
-    <h2>Holorepository</h2>
+    <h2>Related technology review - HoloRepository 2020</h2>
       <div class="tab-pane fade px-4 py-5 show active">
+        <p class = "text-muted"></p>
           
-        <p class="text-muted">The existing HoloRepository is an open-source research project that uses pre-trained neural networks to convert from DICOM scans to GLB and GLTF files.[1] It was developed by UCL Computer Science, Intel(™) Health and Life Sciences, the Digital Research, Great Ormond Street Hospital for Children NHS Foundation Trust (GOSH) and Innovation and Virtual Environment Unit (DRIVE)[2] </p>
-        <p class="text-muted mb-0">There are 3 main edition:<br>
-            1. HoloRepository 2020 for Azure and HoloLens 2. This edition aims to provide a cloud storage plan so that user will not waste local storage to store 3D models.<br>
-          2. HoloRepository 2020 for NUCs. This is mainly used for clinical reasearch.<br>
-          3. HoloRepository 2020 Viewer. This edition can be executed on personal laptop and desktop.Most impotantly, it can render DICOM scans quickly from local storage.[2]</p>
-      </div>
-      
-    </div>
-    <!-- End rounded tabs -->
-  </div>
-
-  <div class="p-5 bg-white rounded shadow mb-5">
-    <!-- Rounded tabs -->
-    <h2>GLTFUtility v.s. UnityGLTF</h2>
-      <div class="tab-pane fade px-4 py-5 show active">
-          
-        <p class="text-muted">As Unity does not natively support GLB and GLTF files, an open-source library is needed. Here are the two useful libraries:<br>
-          1. GLTFUtility:<br>
-          This library is created and manipulated by Siccity. It is continuously updated, and compared with UnityGLTF, it has less bugs.[3] The creator has commented that "GLTFUtility is built with a primary focus on simplicity, does not use external libraries, and can easily navigate to potential contributors. It's plug and play.[5]" This description is very apt.<br>
-          2. UnityGLTF:<br>
-          This library is contributed by KhronosGroup, the creators of GLTF and GLB files. UnityGLTF used a great number of libraries so that it has much more functions and features compared with the others. However, because of its complexity, UnityGLTF becomes a bit messy and many set-ups need to be prepared while using.[5]Additionaly, it has more bugs than GLTFUtility, and the last updated time was a year ago.[4]
-</p>
+        <p class="text-muted"> </p>
+        <p class="text-muted mb-0">The HoloRepository 2020 consists of 3 major component parts[1]:<br>
+          1. HoloRepository 2020 for Azure and HoloLens 2. Works with the newly released HoloLens 2 and facilitates the cloud storage of 3D models.<br>
+          2. HoloRepository 2020 for NUCs. Mainly built for clinical research.<br>
+          3. HoloRepository 2020 Viewer. This is a tool designed for clinicians to teach with that uses the Holopipelines to convert from CT and MRI DICOM scans to 3D GLB models.[2]</p>
+        <p class = "text-muted mb-0">The HoloRepository 2020 Viewer serves as a very useful point of comparison for our application, as it is a 3D model viewer application built to run locally.
+            Seeing the HoloRepository 2020 viewer in operation [9] has been extremely useful, particularly in the early stages of sketching and prototyping when trying to consider what
+            users would require from a 3D medical model viewer application. Some of the features in particular stuck out to us as extremely useful:
+            <ul class = "text-muted mb-0">
+                <li>The ability to change the colour of a loaded model</li>
+                <li>The ability to change the opacity of a loaded model</li>
+                <li>The ability to cycle through the segments of the loaded model</li>
+            </ul>
+        </p>
         
       </div>
       
@@ -304,17 +304,41 @@
   </div>
 
   <div class="p-5 bg-white rounded shadow mb-5">
+    <div class="p-5 bg-white rounded shadow mb-5">
+        <!-- Rounded tabs -->
+        <h2>Unity and why it's a good choice for our application</h2>
+          <div class="tab-pane fade px-4 py-5 show active">
+            <p class="text-muted">Unity is a cross-platform game engine initially released for Mac OS X in June 2005.[6]  It is a good choice of technology for our purposes because, as a Game Engine, it must offer fast real time rendering[10].
+                This is hugely important for us, as it will enable us to offer a performant experience to users even when viewing the extremely complex meshes that can be generated from patient scans. <br><br>
+
+                Furthermore, Unity also keeps a number of the complex ideas underpinning computer graphics abstract and easily accessible to the programmer, which will be useful for us as we are new to
+                the field of computer graphics. For instance, Unity provides two ways of accessing and manipulating the properties of a mesh: using the <i>simple API </i> or using the <i>advanced API</i>.[10]<br><br>
+                
+                Another reason that Unity is a good choice is that the main language that it supports is C#. C# is an object-oriented, statically typed language[8] for which there exists a wealth of well maintained tutorials and documentation online. Being able to work
+                using such a well established, and compared to some languages such as C++, easy to learn language will help development as straightforward as possible. The point about there being a number of tutorials available for C# holds true for Unity specifically as well, which
+                will, again, be very beneficial as we are all approaching this project with very little experience in this field.<br>
+                <br>
+                
+    </p>
     <!-- Rounded tabs -->
-    <h2>History of Unity</h2>
+    <h2>GLTFUtility v.s. UnityGLTF</h2>
       <div class="tab-pane fade px-4 py-5 show active">
           
-        <p class="text-muted">Unity is a cross-platformed game engine which is initially released for Mac OS X in June 2005. It earned its a reputation for its impressing performance and became increasingly well known among Apple developers.For the next year the creators team of Unity earned the Apple Inc.'s Apple Design Rewards. Over time, Unity began to support more platforms, such as Microsoft Windows, the web browser, and is now widely known.[6] <br>
-            
-            The main programming language that Unity supports is C#. Back to Unity 1.0, it has support Unityscript for a long time.[7] Mentioned that Unityscript which is a type of Javascript. Since 2017, Unity gave up on Javascript. Compared with Javascript, C# is statically and strongly. The primary programming paradigm of C# is object-oriented[8] which is a more advanced concepts in pogramming.
-            <br>
-            Many successful games were with Unity, for instance, Fall Guys: Ultimate Knockout, Wasteland 3, Genshin Impact, etc.
-            
-</p>
+        <p class="text-muted">As Unity does not natively support GLB and GLTF files, an open-source library is needed. As loading GLB and GLTF files is such an important part of our project, it was important that we chose the right library. The two main ones we came across in our research were:<br>
+          1. GLTFUtility:<br>
+          This library is developed by Siccity, who both updates the library himself and manages pull requests from other developers frequently.[3] The library being active is a good sign that if bugs are discovered they will be found. The creator has commented that "GLTFUtility is built with a primary focus on simplicity, does not use external libraries, and can easily navigate to potential contributors. It's plug and play.[5]" This description is very apt.<br>
+          2. UnityGLTF:<br>
+          This library is developed by KhronosGroup, the creators of the GLTF file format. UnityGLTF boasts a greater number of features than GLTFUtility, but at the expense of a much more complicated set-up process. However, because of its complexity, UnityGLTF becomes a bit messy and many set-ups need to be prepared while using.[5]Additionaly, both pull requests and commits to the main branch of the GitHub repository are far less frequent than that of GLTFUtility.[4]<br><br>
+         As we do not require any of the more complex functionalites offered by UnityGLTF, we have chosen to use GLTFUtility due to its very simple set-up process and easy to use API for importing GLB and GLTF files into Unity at runtime.
+        </p>
+        
+      </div>
+      
+    </div>
+    <!-- End rounded tabs -->
+  </div>
+
+
         
       </div>
       
@@ -334,6 +358,9 @@
       [6]"Unity (game engine) - Wikipedia", En.wikipedia.org, 2021. [Online]. Available: https://en.wikipedia.org/wiki/Unity_(game_engine). [Accessed: 29- Mar- 2021].<br>
       [7]2021. [Online]. Available: https://forum.unity.com/threads/is-unityscript-javascript-discontinued.486824/. [Accessed: 29- Mar- 2021].<br>
       [8]"C# vs Js | Top 27 Most Valuable and Detailed Comparison To Learn", EDUCBA, 2021. [Online]. Available: https://www.educba.com/c-sharp-vs-js/. [Accessed: 29- Mar- 2021].</p>
+      [9]- HoloRepository Viewer 2020. [Online]. Available: https://www.youtube.com/watch?v=CDra3Yh4Qwo&t=68s. [Accessed: 29- Mar -2021]<br>
+      [10] - Real-time rendering in Unity. [Online].Available: https://unity3d.com/real-time-rendering-3d#:~:text=With%203D%20rendering%2C%20your%20computer,a%20single%20image%20or%20frame.&text=That's%20why%20interactivity%20and%20speed,the%20real%2Dtime%20rendering%20process. [Accessed: 29- Mar- 2021]
+      [11] - Meshes in Unity [Online]. Available: https://docs.unity3d.com/ScriptReference/Mesh.html [Online]. [Accessed: 29- Mar -2021]<br>
         <p class="text-muted mb-0">lalala</p>
       </div>
       
@@ -693,7 +720,7 @@
                             <li>Allow the user to change the brightness of the background.</li>
                             <br>
                         </ul> 
-                        <li>In addition to testing usability, this process served as a form of compatibility testing. Sending these builds allowed us to verify that our application would run correctly on Windows devices beyond the devices it was being developed on. Specifically, we were able to verify 
+                        <li>In addition to testing usability, this process served as a form of compatibility testing. Sending these builds allowed us to verify that our application would run correctly on Windows devices beyond the devices we were using for development. Specifically, we were able to verify 
                             that our GUI scaled well for different screen sizes.
                         </li>
 </ul> 
@@ -716,7 +743,7 @@
                                 <li>The opacity feature is really unique; it provides easy visual access to inner segments of the organ. Amazing design for viewing annotations. It was very useful to have the program teleport to the exact point where the annotation was saved.</li>
                                 <li>The cross section feature was very versatile which improved visualisation.</li><br>
                             </ul>
-                        <p class = "my-3"><b>Areas for improvement</b>
+                        <p class = "my-3"><b>Areas for improvement</b>:
                             <ul>
                             <li>The colour wheel was a bit tedious to spin around.</li>
                             <li>Adding a pan feature on the middle mouse button alongside the keyboard controls would improve ease of use.</li>
@@ -727,7 +754,21 @@
 
                            
                              
-                        <h6 class= "my-3"><b>Sally (55),Educator</b></h6>
+                        <h6 class= "my-3"><b>Sally (55),Teaching Assistant</b></h6>
+                        <p class = "my-3"> <b>Positives</b>:
+                            <ul>
+                                <li>Having the labels pop-up over the different icons was really helpful.</li>
+                                <li>I loved being able to create the cross-sectional views - the way the part of the brain turned black before it disappeared was fantastic</li>
+                                <li>I thought the way the annotations saved the view of the model could be extremely helpful, especially if you wanted to show someone a very specific part of the organ.</li>
+                            </ul>
+                        <p class =  "my-3"><b>Areas for improvement</b>:
+                            <ul>
+                                <li>The pivot definitely shouldn't have been white. It made it pretty difficult to see.</li>
+                                <li>I think the colour of the text in the labels should change based on the background colour - when the background was black the labels were difficult to read.</li>
+                                <li>I think the reset camera button should also reset the position of the pivot. The way the model jumps if you reset the position while the pivot is not centred is disorientating.</li>
+                            </ul>
+                        </p>
+                        </p>
                         </div>
                     </div>
                 </div></div>
@@ -919,74 +960,6 @@
                 </div>
             </div>
 
-
-            <!--Appendicies-->
-        <section class="page-section" id="Appendicies">
-            <div class="container">
-                <div class="text-center">
-                    <h3 class="section-heading text-uppercase">Testing</h3>
-                    <h3 class= "section-heading text-uppercase"></h3>
-    
-                    <h3 class = "section-heading text-uppercase">PlayMode tests in Unity</h3>
-                    <p class = "my-3">The nature of our application made it fundamentally difficult to Unit Test. As our application is built in Unity, the majority of our classes inherit from the MonoBehaviour class.
-                        Unlike other classes in C#, MonoBehaviours cannot be instantiated directly, but must be instead attached to an existing Unity GameObject using the <i>AddComponent&lt&gt</i> function. Furthermore, due to a number of classes being
-                        dependent on the loaded model, testing individual modules of code proved difficult. <br>
-                        However, using the Unity Testing FrameWork, we were able to create tests to verify a few of the core functionalities of our system. Namely, we wrote tests to verify that the Events of our EventManager class could be invoked and received
-                        by the relevant listener classes, whether the models were being loaded with the expected number of segments and that our AnnotationData objects could be parsed to and from JSON. </p>
-                    <img src = "assets/img/ModelLoadingTests.PNG">
-                    <p class = "text-muted">ModelLoadingTests.cs - Involves setting up a small test scene using dummy GameObjects before functionality can be tested.</p>
-                    <img src = "assets/img/TestRunner.PNG">
-                    <p class = "text-muted">Running the playmode tests using the Test Runner.</p>
-                    <h3 class = "section-heading text-uppercase">User acceptance testing</h3>
-                    <h4 class = "section-heading text-uppercase">Alpha testing</h4>
-                    <div class = "row text-left">
-                        <p class = "my-3">Over the course of the second term of our development, we regularly sent builds of our project to our clients. Our clients would provide us with feedback on the project with each iteration we sent,
-                            often making suggestions on how things could be changed. Although this testing was relatively informal, it was hugely beneficial in that:
-                        <ul>
-                            <li>It allowed our clients to have a hands-on experience of using our application, which made it much easier for them to comment on our progress (compared to us simply sharing our screen and demonstrating our progress). This made the feedback they 
-                                provided more valuable, as the feedback was generated from actual experience using the application. The following requirements from our MoSCoW list were actually gathered from our clients testing and providing feedback on iterations of the application:
-                            <ul>
-                                <br>
-                                <li>Have tool-tips appear over elements of the GUI when the pointer hovers over them.</li>
-                                <li>Allow the user to change the position about which the camera is centred.</li>
-                                <li>Have a full-screen mode of the application, which hides all GUI elements. </li>
-                                <li>Allow the user to change the brightness of the background.</li>
-                                <br>
-                            </ul> 
-                            <li>In addition to testing usability, this process served as a form of compatibility testing. Sending these builds allowed us to verify that our application would run correctly on Windows devices beyond the devices it was being developed on. Specifically, we were able to verify 
-                                that our GUI scaled well for different screen sizes.
-                            </li>
-                        </ul> 
-                </div>
-                    <h4 class = "section-heading text-uppercase">Beta testing</h4> 
-                    <p class = "my-3">At the very end of development, we sent the final build of the project to potential users of the project and asked them to provide feedback. Though we were unfortunately unable to carry out user acceptance testing with actual clinicians, we hope that this information is useful if the HoloRepository Portable 2021 is ever iterated upon.</p>
-                    <br></br>
-                    <div class="row text-left">
-                        <div class="col-md-50">
-                            <h6 class="my-3"><b>Oscar (20),Second Year Biomedical Engineering Student</b></h6>
-                            <p class = "my-3"><b>Positives</b>: 
-                                <ul>
-                                    <li>The user interface provided a very pleasant experience. Everything was clear, and the labels which appeared when hovering over the icons made things easy to understand.</li> 
-                                    <li>Movement of the segmentation viewer was intuitive and very easy to control. </li>
-                                    <li>The opacity feature is really unique; it provides easy visual access to inner segments of the organ. Amazing design for viewing annotations. It was very useful to have the program teleport to the exact point where the annotation was saved.</li>
-                                    <li>The cross section feature was very versatile which improved visualisation.</li><br>
-                                </ul>
-                            <p class = "my-3"><b>Areas for improvement</b>
-                                <ul>
-                                <li>The colour wheel was a bit tedious to spin around.</li>
-                                <li>Adding a pan feature on the middle mouse button alongside the keyboard controls would improve ease of use.</li>
-                                <li>It would be optimal if the opacity slider is unique to each segment, resetting when viewing each segments.</li>
-                                <li>Providing an option to change size of the navigation bar, colour wheel and all other features on the UI would allow for easier visualisation especially when zooming into intricate sections of the segmentation.</li>
-                                </ul>
-                            </p>
-    
-                               
-                                 
-                            <h6 class= "my-3"><b>Sally (55),Educator</b></h6>
-                            </div>
-                        </div>
-                    </div>
-                    <p class ="my-3"></p>
             <div class="row" style="margin-top: 50px;">
                 <div class="col" style="text-align: center;">
                     <h1 class="display-6" style="margin-top: 50px;margin-bottom: 30px;">Individual Contribution Table</h1><table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
@@ -1102,7 +1075,7 @@
                                         <div class="col">
                                             <div data-bss-hover-animate="bounce" class="box">
                                                 <h3 class="name"><strong>Functionality</strong><br></h3>
-                                                <p class="description">We have already finished all the tasks in our MoSCoW list, including all the key functions and the optional functions. According to the feedback provided by some users and the results of performance test, all the functions and features of our application can be executed well. Additionally, all the libraries that we used in our application are open-source such as GLTFUtility and SimpleImageToolKit. These libraries are well known and maintained by professional teams. This ensures that some of the functions that depend on these libraries in our projects will continue to work well after a long time. Overall, we believe the functionality of our application is great. </p>
+                                                <p class="description">We have implemented 100% of the requirements on our MoSCoW list. Over the course of development, we've frequently sent builds of our project to our clients and they have been happy with what we've accomplished. The small amount of beta testing we carried out has also been very encouraging in that potential users of our application have enjoyed the experience of using it. </p>
                                             </div>
                                         </div>
                                     </div>
@@ -1110,7 +1083,7 @@
                                         <div class="col">
                                             <div data-bss-hover-animate="bounce" class="box">
                                                 <h3 class="name"><strong>Compatibility</strong><br></h3>
-                                                <p class="description">Unfortunately, our application only support Windows operating system for now. The idea of cross-platform has been considered as a future work. To see more details please scroll down to see the section of "Future Works". </p>
+                                                <p class="description">The application should run on any machine running Windows 10. We know that it runs well on the machines our clients use, as well as the three main machines that we used throughout development. </p>
                                             </div>
                                         </div>
                                     </div>
@@ -1128,7 +1101,7 @@
                                         <div class="col">
                                             <div data-bss-hover-animate="bounce" class="box">
                                                 <h3 class="name"><strong>Maintainability</strong><br></h3>
-                                                <p class="description">To ensure maintainability of the future work, we have many detailed comments on every C# script. These comments are able to help people who are reading the code for the first time understand quickly what the code means and their functions.</p>
+                                                <p class="description">To ensure that our codebase is maintainable, we have commented every class we have written. All assets of our Unity project are also logically separated into folders to make development as straightforward as possible. However, the code design of the system as a whole could definitely be improved upon.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -1136,7 +1109,14 @@
                                         <div class="col">
                                             <div data-bss-hover-animate="bounce" class="box">
                                                 <h3 class="name"><strong>Project Management</strong><br></h3>
-                                                <p class="description">In general, in addition to meeting with Clients and TA, we meet at least once a week to share our progress and upcoming tasks. Usually we use Trello to manage our progress. In addition to meetings, we often use Teams to connect with each other, assuming we can help each other quickly when they have a problem. We usually stored the project on GitHub and Unity Cloud.</p>
+                                                <p class="description">Over the course of the project, we scheduled weekly meetings with our clients and would aim to demonstrate a new feature/improvement to an existing feature at each meeting. This helped us feel less overwhelmed by how huge 
+                                                    the project we were undertaking felt, and ultimately helped us manage our time better.<br>
+                                                    As our project is built in Unity, we were able to make use of the services Unity Collaborate and Unity Cloud Build. This meant that whenever we pushed any new code to the cloud, a new build of our project would be created. This helped save
+                                                    time in creating new builds manually and made our workflow much smoother. <br>
+                                                    However, one area in which our project management could've been improved was how much we communicated outside of our client meetings. We did communicate over MS teams, but it was sometimes difficult to get a hold of one another and this led to long periods 
+                                                    of time when no communication was made.
+                                                    Furthermore, our project became very difficult to manage when Shuai lost internet connection for three weeks and the team consisted of just Bryn. After this happened it was very difficult to re-establish a robust project plan and did make the 
+                                                    few weeks of development extremely difficult./p>
                                             </div>
                                         </div>
                                     </div>
@@ -1149,22 +1129,43 @@
             <div class="row" data-aos="fade-up" style="margin-top: 50px;">
                 <div class="col">
                     <h1 style="text-align: center;">Future Work</h1>
-                    <p style="text-align: center;">If we had more time, we will try to add the following features:</p><p style="text-align: left;">
     <ul>
-<li>Our application could be fully  integrated into the existing HoloRepository ecosystem. The existing HoloRepository is an open-source research project that uses pre-trained neural networks to convert from DICOM scans to GLB and GLTF files. Most of the example models included in our applications were actually generated using the HoloRepository.
-Future versions of our system could allow the clinician to select DICOMs which would then be converted into glb/gltf files using the HoloRepository before being rendered. This would be particularly useful in conjunction with the DICOM viewing feature, as they would be able to view the original scans alongside the model.</li>
+<li>Our application could be fully  integrated into the existing HoloRepository ecosystem. In an ideal world, a clinician would be able to select a patient scan, which would then be immediately converted into a GLB model and loaded and rendered by our application. Using our DICOM viewer feature, the original patient scans could then be viewed along-side the newly generated 3D model. </li>
 <li>Secondly, higher fidelity rendering of the models could be carried out, which could involve more detailed texturing and raytracing. This is something that is already being looked into by a third year student.</li>
 <li>Thirdly, the application could be made cross platform, so that clinicians and educators could use it on other Operating systems, as well as  their phones and tablets.</li>
-<li>Finally, the ability to open the application from well formatted URL links. The parameters of these links could include the model file to be loaded, along with the attributes of the AnnotationData class that we are currently using to store scene state. Clicking on one of these links would render the model passed as the parameter, and immediately take the user to the view of the model determined by the other parameters. </li>
+<li>Finally, the ability to open the application from well formatted URL links. The parameters of these links could include the model file to be loaded, along with the attributes of the AnnotationData class that we are currently using to store a given view of the model. Clicking on one of these links would render the model passed as the parameter, and immediately take the user to the view of the model determined by the other parameters. </li>
 </ul>
 
-</p>
-                </div>
-        <section class="page-section" id="Appendicies">
+    <section class="page-section" id="appendices">
+    <section class="bg-light" id="appendices">
             <div class="container">
                 <h3 class = "section-heading text-uppercase">Appendicies</h3>
+                <h4 class = "section-heading text-uppercase">Legal statement</h4>
+                <p class = "my-3">The HoloRepository Portable 2021 is an early proof of concept for development purposes and should not be used as-is in a live environment without further redevelopment and/or testing. No warranty is given and no real data or personally identifiable data should be stored. Usage and its liabilities are your own.</p>
+                <p class = "my-3"><a href="assets\img\user manual.pdf">User manual</a></li></p>
+                <p class = "my-3"><a href="assets\img\DeploymentManual (3).pdf.pdf">Deployment manual</a></li></p>
+                <h4 class = "section-heading text-uppercase">Libraries</h4>
+                <ul>
+                    <li><a href = "https://github.com/Siccity/GLTFUtility">GLTFUtility</a>, for the runtime import of GLB/GLTF files into Unity.</li>
+                    <li><a href = "https://simpleitk.org">SimpleImageToolKit</a>, for the loading of DICOM scans into our application.</li>
+                    <li><a href = "https://github.com/Dandarawy/Unity3DCrossSectionShader">Unity3DCrossSectionShader</a>, used as reference for implementing the cross sectional viewer feature.</li>
+                    <li><a href = "https://github.com/gkngkc/UnityStandaloneFileBrowser">UnityStandAloneFileBrowser</a>, for opening the native Windows file explorer from within our application.</li>
+                </ul>
+                <h4 class = "section-heading text-uppercase">Images</h4>
+                <ul>
+                    <li>Camera rotation icon: <a href = "https://thenounproject.com/term/hand-grab/593528/">HAND GRAB</a> by creative outlet from thenounproject.com</li>
+                    <li>Annotation icon: from <a href = "https://www.iconbros.com/">iconbros</a></li>
+                    <li>HoloRepository logo shown on application splash screen: from <a href = "https://github.com/AppertaFoundation/HoloRepository-2020/tree/master/CloudHoloRepository2020-Core%20(Untested%20WIP)"></a>The HoloRepository GitHub page</li>
+                </ul>
+                <br>
+                <p>System developed by: Bryn Llewelyn-Jones, Shuai Yuan, Daniel Rempel</p> <br>
+                <p>Clients: Dr Dean Mohemedally (UCL), Sheena Visram (UCL/GOSH), Costas Stylianou (Intel)</p> <br>
+                <p>Supervisors and Teaching Assistants: Dr Dean Mohemedally, Daniele Giunchi</p><br>
+                <p>University College London</p>
+
             </div>
         </div>
+    </section>
     </section>
     <section class="py-5">
         <div class="container">
@@ -1179,141 +1180,10 @@ Future versions of our system could allow the clinician to select DICOMs which w
     <footer style="background: #211f1f;">
         <div class="container">
             <div class="row">
-                <div class="col"><span class="copyright" style="color: var(--bs-white);">Copyright&nbsp;© 2020-2021 UCL COMP0016 TEAM32 | Holorepository Portable 2021, modified by SY</span></div>
+                <div class="col"><span class="copyright" style="color: var(--bs-white);">2020-2021 UCL COMP0016 TEAM32 | Holorepository Portable 2021</span></div>
             </div>
         </div>
     </footer>
-    <div class="modal fade text-center portfolio-modal" role="dialog" tabindex="-1" id="portfolioModal1">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 mx-auto">
-                            <div class="modal-body">
-                                <h2 class="text-uppercase">Project Name</h2>
-                                <p class="text-muted item-intro">Lorem ipsum dolor sit amet consectetur.</p><img class="img-fluid d-block mx-auto" src="assets/img/portfolio/1-full.jpg">
-                                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                                <ul class="list-unstyled">
-                                    <li>Date: January 2017</li>
-                                    <li>Client: Threads</li>
-                                    <li>Category: Illustration</li>
-                                </ul><button class="btn btn-primary" type="button" data-bs-dismiss="modal"><i class="fa fa-times"></i><span>&nbsp;Close Project</span></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade text-center portfolio-modal" role="dialog" tabindex="-1" id="portfolioModal2">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 mx-auto">
-                            <div class="modal-body">
-                                <h2 class="text-uppercase">Project Name</h2>
-                                <p class="text-muted item-intro">Lorem ipsum dolor sit amet consectetur.</p><img class="img-fluid d-block mx-auto" src="assets/img/portfolio/2-full.jpg">
-                                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                                <ul class="list-unstyled">
-                                    <li>Date: January 2017</li>
-                                    <li>Client: Threads</li>
-                                    <li>Category: Illustration</li>
-                                </ul><button class="btn btn-primary" type="button" data-bs-dismiss="modal"><i class="fa fa-times"></i><span>&nbsp;Close Project</span></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade text-center portfolio-modal" role="dialog" tabindex="-1" id="portfolioModal3">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 mx-auto">
-                            <div class="modal-body">
-                                <h2 class="text-uppercase">Project Name</h2>
-                                <p class="text-muted item-intro">Lorem ipsum dolor sit amet consectetur.</p><img class="img-fluid d-block mx-auto" src="assets/img/portfolio/3-full.jpg">
-                                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                                <ul class="list-unstyled">
-                                    <li>Date: January 2017</li>
-                                    <li>Client: Threads</li>
-                                    <li>Category: Illustration</li>
-                                </ul><button class="btn btn-primary" type="button" data-bs-dismiss="modal"><i class="fa fa-times"></i><span>&nbsp;Close Project</span></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade text-center portfolio-modal" role="dialog" tabindex="-1" id="portfolioModal4">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 mx-auto">
-                            <div class="modal-body">
-                                <h2 class="text-uppercase">Project Name</h2>
-                                <p class="text-muted item-intro">Lorem ipsum dolor sit amet consectetur.</p><img class="img-fluid d-block mx-auto" src="assets/img/portfolio/4-full.jpg">
-                                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                                <ul class="list-unstyled">
-                                    <li>Date: January 2017</li>
-                                    <li>Client: Threads</li>
-                                    <li>Category: Illustration</li>
-                                </ul><button class="btn btn-primary" type="button" data-bs-dismiss="modal"><i class="fa fa-times"></i><span>&nbsp;Close Project</span></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade text-center portfolio-modal" role="dialog" tabindex="-1" id="portfolioModal5">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 mx-auto">
-                            <div class="modal-body">
-                                <h2 class="text-uppercase">Project Name</h2>
-                                <p class="text-muted item-intro">Lorem ipsum dolor sit amet consectetur.</p><img class="img-fluid d-block mx-auto" src="assets/img/portfolio/5-full.jpg">
-                                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                                <ul class="list-unstyled">
-                                    <li>Date: January 2017</li>
-                                    <li>Client: Threads</li>
-                                    <li>Category: Illustration</li>
-                                </ul><button class="btn btn-primary" type="button" data-bs-dismiss="modal"><i class="fa fa-times"></i><span>&nbsp;Close Project</span></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade text-center portfolio-modal" role="dialog" tabindex="-1" id="portfolioModal6">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 mx-auto">
-                            <div class="modal-body">
-                                <h2 class="text-uppercase">Project Name</h2>
-                                <p class="text-muted item-intro">Lorem ipsum dolor sit amet consectetur.</p><img class="img-fluid d-block mx-auto" src="assets/img/portfolio/6-full.jpg">
-                                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                                <ul class="list-unstyled">
-                                    <li>Date: January 2017</li>
-                                    <li>Client: Threads</li>
-                                    <li>Category: Illustration</li>
-                                </ul><button class="btn btn-primary" type="button" data-bs-dismiss="modal"><i class="fa fa-times"></i><span>&nbsp;Close Project</span></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
