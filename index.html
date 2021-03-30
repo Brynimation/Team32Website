@@ -162,7 +162,7 @@
         </thead>
         <tbody>
             <tr>
-                <td>Allow the user to select and view one of five example GLB models (brain, lung, kidney, bone, abdomen and eye).</td>
+                <td>Allow the user to select and view one of five example GLB models (brain, lung, kidney, bone and abdomen).</td>
                 <td>Must have</td>
             </tr>
             <tr>
@@ -357,11 +357,12 @@
       [5]2021. [Online]. Available: https://forum.unity.com/threads/gltfutility-a-simple-gltf-plugin.654319/. [Accessed: 29- Mar- 2021].<br>
       [6]"Unity (game engine) - Wikipedia", En.wikipedia.org, 2021. [Online]. Available: https://en.wikipedia.org/wiki/Unity_(game_engine). [Accessed: 29- Mar- 2021].<br>
       [7]2021. [Online]. Available: https://forum.unity.com/threads/is-unityscript-javascript-discontinued.486824/. [Accessed: 29- Mar- 2021].<br>
-      [8]"C# vs Js | Top 27 Most Valuable and Detailed Comparison To Learn", EDUCBA, 2021. [Online]. Available: https://www.educba.com/c-sharp-vs-js/. [Accessed: 29- Mar- 2021].</p>
+      [8]"C# vs Js | Top 27 Most Valuable and Detailed Comparison To Learn", EDUCBA, 2021. [Online]. Available: https://www.educba.com/c-sharp-vs-js/. [Accessed: 29- Mar- 2021].
       [9]- HoloRepository Viewer 2020. [Online]. Available: https://www.youtube.com/watch?v=CDra3Yh4Qwo&t=68s. [Accessed: 29- Mar -2021]<br>
-      [10] - Real-time rendering in Unity. [Online].Available: https://unity3d.com/real-time-rendering-3d#:~:text=With%203D%20rendering%2C%20your%20computer,a%20single%20image%20or%20frame.&text=That's%20why%20interactivity%20and%20speed,the%20real%2Dtime%20rendering%20process. [Accessed: 29- Mar- 2021]
+      [10] - Real-time rendering in Unity. [Online].Available: https://unity3d.com/real-time-rendering-3d#:~:text=With%203D%20rendering%2C%20your%20computer,a%20single%20image%20or%20frame.&text=That's%20why%20interactivity%20and%20speed,the%20real%2Dtime%20rendering%20process. [Accessed: 29- Mar- 2021]<br>
       [11] - Meshes in Unity [Online]. Available: https://docs.unity3d.com/ScriptReference/Mesh.html [Online]. [Accessed: 29- Mar -2021]<br>
-      </div>
+    </p>  
+    </div>
       
     </div>
     <!-- End rounded tabs -->
@@ -464,11 +465,11 @@
                 <h4 class = "my-3">Model Loading and Initialisation</h4>
                 <img src = "assets/img/implementation_section/Model%20loading%20class%20diagram.png" style="width:70%">
                 <p class ="text-muted">The ModelHandler class loads and initialises the model (using the OrganFactory), and listens for EventManager events that relate to changing the state of a particular segment of the loaded model. </p>
-                <h4 class = "my-3">Annotations and storing scene state</h4>
+                <h4 class = "my-3">Annotations and storing a particular model view</h4>
                 <img src = "assets/img/implementation_section/Annotations%20and%20storing%20scene%20state%20(1).png" style="width:70%">
-                <p class ="text-muted">Annotations are used to store the current state of the scene along with text input by the user about that particular scene state.
+                <p class ="text-muted">Annotations are used to store the current view of the model, along with text input by the user about that particular view.
                     Annotations are stored in the form of AnnotationData objects which can be parsed to and from JSON. The relevant data from the scene is used to initialise
-                    these objects. This same data can be used to reinitialise the state of the scene when a particular annotation is selected.
+                    these objects. This same data can be used to reinitialise the view of the model when a particular annotation is selected.
                 </p>
             </div>
             <div class = "text-center">
@@ -792,7 +793,7 @@
         <tbody>
             <tr>
                 <td>1</td>
-                <td>Allow the user to select and view one of five example GLB models (brain, lung, kidney, bone, abdomen).</td>
+                <td>Allow the user to select and view one of five example GLB models (brain, lung, kidney, bone and abdomen).</td>
                 <td>Must have</td>
                 <td>☑️</td>
                 <td>All</td>
@@ -1064,9 +1065,10 @@
                                         <div class="col">
                                             <div data-bss-hover-animate="bounce" class="box">
                                                 <h3 class="name"><strong>Stability</strong><br></h3>
-                                                <p class="description">In the progress of executing our application and testing, no phenomenon of crash has been noticed. Al, the bugs have been fixed while programming. However, some warnings may cause the application run slowly. This can be improved during future development. </p>
+                                                <p class="description">Our application is stable. We did experience issues during development when attempting to load non-embedded gltf files into our application which would cause the application to freeze and become unresponsive. However, this was a problem with the way in which we were using the GLTFUtility functions and has now
+                                                    been rectified. As far as we are aware, no application breaking bugs exist in the system currently.  </p>
                                             </div>
-                                        </div>
+                                        </div>s
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-lg-4 item">
@@ -1092,7 +1094,7 @@
                                         <div class="col">
                                             <div data-bss-hover-animate="bounce" class="box">
                                                 <h3 class="name"><strong>Efficiency</strong><br></h3>
-                                                <p class="description">Apart from the example models, we have tested loading other models into the application using the open source models hosted on the Github of KHRONOS GROUP, the creators of GLTF and GLB files. All the models can be loaded in and successfully rendered in 2 seconds. However, as all these models are not medical models and are&nbsp;relatively simple to construct, we do not know how long it will take while loading in and render a professional medical model, which is more complex. This can be tested in future work. </p>
+                                                <p class="description"> The efficiency (or performance) of our application is good. On all machines that it has run on, the viewing of the model is smooth and frame rate is consistently high. The only exception to this rule is when the model of the brain (which is extremely complex) is viewed on a low end machine, such as a laptop with integrated graphics rather than a GPU. Our application has, however, consistently been shown to take a very long time to build and compile when it is first loaded onto a new device.  </p>
                                             </div>
                                         </div>
                                     </div>
@@ -1114,8 +1116,8 @@
                                                     time in creating new builds manually and made our workflow much smoother. <br>
                                                     However, one area in which our project management could've been improved was how much we communicated outside of our client meetings. We did communicate over MS teams, but it was sometimes difficult to get a hold of one another and this led to long periods 
                                                     of time when no communication was made.
-                                                    Furthermore, our project became very difficult to manage when Shuai lost internet connection for three weeks and the team consisted of just Bryn. After this happened it was very difficult to re-establish a robust project plan and did make the 
-                                                    few weeks of development extremely difficult./p>
+                                                    Furthermore, our project became very difficult to manage when Shuai lost internet connection for three weeks and the team consisted of just Bryn, as Daniel applied for an interruption to his studies at the end of term 1. After this happened it was very difficult to re-establish a robust project plan and did make the 
+                                                    few weeks of development extremely difficult.</p>
                                             </div>
                                         </div>
                                     </div>
